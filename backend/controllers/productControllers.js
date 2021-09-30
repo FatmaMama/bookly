@@ -9,7 +9,11 @@ exports.addProduct = async (req, res, next) => {
     })
 }
 
-exports.getProducts = (req, res, next) => {
-    res.status(200).json({message: "this route will show all products"})
-    
+exports.getProducts = async (req, res) => {
+    const products = await Product.find();
+    res.status(200).json({
+        success: true,
+        count : products.length,
+        products
+    })
 }
