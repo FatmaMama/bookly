@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Sandisk Ultra",
+        "price": "45.89",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id": "products/tzfsnrli3szrdnb4jgge",
+            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+         }],
+        "category" : "Electronics",
+        "seller" : "Ebay",
+        "stock" : 50,
+        "numOfReviews" : 32,
+        "reviews" : []
+    },
+    {
+        "name": "Can USB",
+        "price": "315.00",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id": "products/l2bd3hhy8dds1cxstuuz",
+            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/l2bd3hhy8dds1cxstuuz.jpg"       
+         }],
+        "category" : "Electronics",
+        "seller" : "Ebay",
+        "stock" : 50,
+        "numOfReviews" : 32,
+        "reviews" : []
+    },
+    {
+        "name": "Sandisk Ultra",
+        "price": "45.89",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id": "products/chairmount_nuubea",
+            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/chairmount_nuubea.jpg"       
+         }],
+        "category" : "Electronics",
+        "seller" : "Ebay",
+        "stock" : 50,
+        "numOfReviews" : 32,
+        "reviews" : []
+    },
+    {
+        "name": "Sandisk Ultra",
+        "price": "45.89",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id": "products/tzfsnrli3szrdnb4jgge",
+            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+         }],
+        "category" : "Electronics",
+        "seller" : "Ebay",
+        "stock" : 50,
+        "numOfReviews" : 32,
+        "reviews" : []
+    },
+    {
+        "name": "Sandisk Ultra",
+        "price": "45.89",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id": "products/tzfsnrli3szrdnb4jgge",
+            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+         }],
+        "category" : "Electronics",
+        "seller" : "Ebay",
+        "stock" : 50,
+        "numOfReviews" : 32,
+        "reviews" : []
+    },
+    {
+        "name": "Sandisk Ultra",
+        "price": "45.89",
+        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id": "products/tzfsnrli3szrdnb4jgge",
+            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+         }],
+        "category" : "Electronics",
+        "seller" : "Ebay",
+        "stock" : 50,
+        "numOfReviews" : 32,
+        "reviews" : []
+    }
+]
