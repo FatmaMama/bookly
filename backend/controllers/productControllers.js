@@ -1,6 +1,6 @@
 const Product = require('../models/productModel');
 
-//Add a product   /api/v1/product/new
+//Add a product   /api/v1/admin/product/new
 exports.addProduct = async (req, res, next) => {
     const product = await Product.create(req.body);
     res.status(201).json({
@@ -36,7 +36,7 @@ exports.getProductById = async (req, res) => {
     })
 };
 
-//Update a product   /api/v1/product/:id
+//Update a product   /api/v1/admin/product/:id
 exports.updateProduct = async (req,res) => {
     try {
         let product = await Product.findById(req.params.id);
@@ -62,5 +62,28 @@ exports.updateProduct = async (req,res) => {
     } catch (error) {
         console.error(error)
     }
-    
+};
+
+//Delete a product   /api/v1/admin/product/:id
+exports.deleteProduct = async (req,res) => {
+    try {
+        let product = await Product.findById(req.params.id);
+
+        if(!product){
+            res.status(404).json({
+                success : false,
+                message : "Product Not Found"
+            })
+        };
+
+        product.remove();
+
+        res.status(200).json({
+            success: true,
+            message: "product deleted"
+        });
+
+    } catch (error) {
+        console.error(error)
+    }
 }
