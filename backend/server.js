@@ -18,6 +18,13 @@ const products = require('./routes/productRoutes');
 app.use('/api/v1', products);
 app.use(errorMiddleware)
 
-app.listen(process.env.PORT, ()=> {
+const server = app.listen(process.env.PORT, ()=> {
     console.log(`server running on port : ${process.env.PORT} in ${process.env.NODE_ENV} mode` )
+})
+
+//Handle Unhandled Promise Rejections
+process.on('unhandledRejection', (err) => {
+    console.log(`ERROR: ${err.message}`);
+    console.log('Shutting down the server due to Unhandled Promise Rejection');
+    server.close(()=> process.exit(1))
 })
