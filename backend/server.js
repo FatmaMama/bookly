@@ -19,5 +19,5 @@ app.use('/api/v1', products);
 app.use(errorMiddleware)
 
 app.listen(process.env.PORT, ()=> {
-    console.log(`server running on port : ${process.env.PORT} in ${process.env.NODE_ENV}mode` )
+    console.log(`server running on port : ${process.env.PORT} in ${process.env.NODE_ENV} mode` )
 })
