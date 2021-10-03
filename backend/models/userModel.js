@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Please enter your name"],
-        maxLength: [30, "Your name can not exceed 30 characters"]
+        maxlength: [30, "Your name can not exceed 30 characters"]
     },
     email: {
         type: String,
@@ -15,7 +17,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, "Please enter your password"],
-        minLength: [6, "Your password must be longer than 6 characters"],
+        minlength: [6, "Your password must be longer than 6 characters"],
         select: false
     },
     avatar: {
@@ -38,8 +40,38 @@ const userSchema = new mongoose.Schema({
     },
 
     resetPasswordToken: String,
-    resetPasswordExpire: String
+    resetPasswordExpire: Date
 });
+
+//Encrypting password before saving user
+// userSchema.pre('save', async function(next){
+   
+//     if(!this.isModified('passwrod')){
+//         next()
+//     };
+    
+//     this.password = await bcrypt.hash(this.password, 10)
+    
+// });
+
+userSchema.pre('save', function(next) {
+    if (!this.isModified('password')) {
+        return next();
+    }
+
+    this.hashPassword(this.password)
+        .then((password) => {
+            this.password = password;
+            next();
+        });
+});
+
+userSchema.methods = {
+    hashPassword(password) {
+        return bcrypt.hash(password, 10);
+    },
+}
+
 
 const User = mongoose.model('User', userSchema);
 module.exports = User;

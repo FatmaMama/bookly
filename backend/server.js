@@ -19,11 +19,16 @@ dotenv.config({ path: 'backend/config/config.env' });
 //connect DB
 ConnectDB();
 
+
+
 //import all routes
 const products = require('./routes/productRoutes');
+const user = require('./routes/userRoutes');
 
 app.use('/api/v1', products);
-app.use(errorMiddleware)
+app.use('/api/v1', user);
+
+app.use(errorMiddleware);
 
 const server = app.listen(process.env.PORT, ()=> {
     console.log(`server running on port : ${process.env.PORT} in ${process.env.NODE_ENV} mode` )
