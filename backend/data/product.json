@@ -16,7 +16,7 @@
     },
     {
         "name": "Can USB",
-        "price": "315.00",
+        "price": "164.00",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
         "ratings" : 4.5,
         "images" : [{
@@ -30,8 +30,8 @@
         "reviews" : []
     },
     {
-        "name": "Sandisk Ultra",
-        "price": "45.89",
+        "name": "MacBook apple",
+        "price": "996.89",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
         "ratings" : 4.5,
         "images" : [{
@@ -45,8 +45,8 @@
         "reviews" : []
     },
     {
-        "name": "Sandisk Ultra",
-        "price": "45.89",
+        "name": "Sandisk Apple",
+        "price": "236.99",
         "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
         "ratings" : 4.5,
         "images" : [{

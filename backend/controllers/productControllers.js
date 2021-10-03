@@ -13,15 +13,22 @@ exports.addProduct = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Get all products    /api/v1/products?keyword=apple
-exports.getProducts = catchAsyncErrors(async (req, res) => {
+exports.getProducts = catchAsyncErrors(async (req, res, next) => {
+
+    const resPerPage = 4;
+    const productCount = await Product.countDocuments();
+
     const apiFeatures = new ApiFeatures(Product.find(), req.query)
                         .search()
+                        .filter()
+                        .pagination(resPerPage)
 
     const products = await apiFeatures.query;
 
     res.status(200).json({
         success: true,
         count : products.length,
+        productCount,
         products
     })
 });
@@ -41,7 +48,7 @@ exports.getProductById = catchAsyncErrors(async (req, res, next) => {
 });
 
 //Update a product   /api/v1/admin/product/:id
-exports.updateProduct = catchAsyncErrors(async (req,res) => {
+exports.updateProduct = catchAsyncErrors(async (req,res, next) => {
         let product = await Product.findById(req.params.id);
 
         if(!product) {
@@ -61,7 +68,7 @@ exports.updateProduct = catchAsyncErrors(async (req,res) => {
 });
 
 //Delete a product   /api/v1/admin/product/:id
-exports.deleteProduct = catchAsyncErrors(async (req,res) => {
+exports.deleteProduct = catchAsyncErrors(async (req,res, next) => {
     try {
         let product = await Product.findById(req.params.id);
 
