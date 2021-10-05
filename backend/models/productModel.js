@@ -84,16 +84,22 @@ const productSchema = new mongoose.Schema({
         type : Number,
         default : 0,
     },
-    createdAt : {
-        type : Date,
-        default: Date.now
-    },
     sizes : [{
         type : Number,
     }],
     colors : [{
         type : String,
-    }]
+    }],
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    createdAt : {
+        type : Date,
+        default: Date.now
+    },
+    
 })
 
 
