@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const catchAsyncErrors = require('../middlewares/asyncErrors');
-const ErrorHandler = require('../utils/errorHandler')
+const ErrorHandler = require('../utils/errorHandler');
+const sendToken = require('../utils/jwtToken');
 
 //Regiter user   api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -16,12 +17,7 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
         }
     });
 
-    const token = user.getJwtToken();
-   
-    res.status(201).json({
-        success:true,
-        token
-    })
+    sendToken(user, 200, res);
 });
 
 //Login user   api/v1/login
@@ -46,10 +42,5 @@ exports.loginUser = catchAsyncErrors(async (req, res, next) => {
         return next(new ErrorHandler("Invalid Credentials", 401))
     };
 
-    const token = user.getJwtToken();
-
-    res.status(201).json({
-        success:true,
-        token
-    })
+    sendToken(user, 200, res);
 })
