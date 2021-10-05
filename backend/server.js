@@ -3,8 +3,10 @@ const app = express();
 const dotenv = require('dotenv');
 const ConnectDB = require('./config/database');
 const errorMiddleware = require('./middlewares/errors');
+const cookieParser = require('cookie-parser');
 
-app.use(express.json())
+app.use(express.json());
+app.use(cookieParser())
 
 //Handle Uncaught Exceptions
 process.on('uncaughtException', err => {
