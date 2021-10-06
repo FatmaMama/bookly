@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const catchAsyncErrors = require('../middlewares/asyncErrors');
 const ErrorHandler = require('../utils/errorHandler');
 const sendToken = require('../utils/jwtToken');
+const sendEmail = require('../utils/sendEmail')
 
 //Regiter user   api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
@@ -56,4 +57,44 @@ exports.logoutUser = catchAsyncErrors( async (req,res,next) =>{
         success: true,
         message: "logged out"
     })
+});
+
+//forgot password   api/v1/password/forgot
+exports.forgotPassword = catchAsyncErrors( async(req, res, next) => {
+    const user = await User.findOne({ email : req.body.email });
+
+    if(!user){
+        return next(new ErrorHandler('User not found with this email', 404))
+    };
+
+    const resetToken = user.getResetPasswordToken();
+
+    await user.save({ validateBeforeSave: false });
+
+    //Create reset password url
+    const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/password/reset/${resetToken}`;
+
+    const message = `your password reset token is as follow: \n\n${resetUrl}\n\n
+    if you have not requested this email, then ignore it.`;
+
+    //send email
+    try {
+        await sendEmail({
+            email: user.email,
+            subject: 'Fantasia password recovery',
+            message
+        });
+
+        res.status(200).json({
+            success: true,
+            message: `email sent to ${user.email}`
+        })
+        
+    } catch (error) {
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+
+        await user.save({ validateBeforeSave: false });
+        return next(new ErrorHandler(error.message, 500))
+    }
 })
