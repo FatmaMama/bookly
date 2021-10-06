@@ -9,7 +9,8 @@ const { registerUser,
         getUserProfile, 
         updatePassword, 
         updateProfile, 
-        allUsers 
+        allUsers, 
+        userDetails
     } = require('../controllers/userControllers');
 
 router.post('/register', registerUser);
@@ -29,5 +30,7 @@ router.put('/password/update', isAuthenticated, updatePassword);
 router.put('/me/update', isAuthenticated, updateProfile);
 
 router.get('/admin/users', isAuthenticated, authorizeRoles('admin'), allUsers);
+
+router.get('/admin/user/:id', isAuthenticated, authorizeRoles('admin'), userDetails);
 
 module.exports = router;
