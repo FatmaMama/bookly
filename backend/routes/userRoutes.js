@@ -10,7 +10,9 @@ const { registerUser,
         updatePassword, 
         updateProfile, 
         allUsers, 
-        userDetails
+        getUserDetails,
+        updateUser,
+        deleteUser
     } = require('../controllers/userControllers');
 
 router.post('/register', registerUser);
@@ -31,6 +33,10 @@ router.put('/me/update', isAuthenticated, updateProfile);
 
 router.get('/admin/users', isAuthenticated, authorizeRoles('admin'), allUsers);
 
-router.get('/admin/user/:id', isAuthenticated, authorizeRoles('admin'), userDetails);
+router.get('/admin/user/:id', isAuthenticated, authorizeRoles('admin'), getUserDetails);
+
+router.put('/admin/user/:id', isAuthenticated, authorizeRoles('admin'), updateUser);
+
+router.delete('/admin/user/:id', isAuthenticated, authorizeRoles('admin'), deleteUser);
 
 module.exports = router;
