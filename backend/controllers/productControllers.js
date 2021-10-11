@@ -71,8 +71,7 @@ exports.updateProduct = catchAsyncErrors(async (req,res, next) => {
 
 //Delete a product   /api/v1/admin/product/:id
 exports.deleteProduct = catchAsyncErrors(async (req,res, next) => {
-    try {
-        let product = await Product.findById(req.params.id);
+        const product = await Product.findById(req.params.id);
 
         if(!product) {
             return next(new ErrorHandler('Product Not Found', 404))
@@ -84,10 +83,6 @@ exports.deleteProduct = catchAsyncErrors(async (req,res, next) => {
             success: true,
             message: "product deleted"
         });
-
-    } catch (error) {
-        console.error(error)
-    }
 });
 
 //Create new review   /api/v1/review
