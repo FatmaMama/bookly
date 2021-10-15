@@ -4,9 +4,11 @@ const dotenv = require('dotenv');
 const ConnectDB = require('./config/database');
 const errorMiddleware = require('./middlewares/errors');
 const cookieParser = require('cookie-parser');
+// const cors = require('cors')
 
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
+// app.use(cors());
 
 //Handle Uncaught Exceptions
 process.on('uncaughtException', err => {
@@ -39,8 +41,8 @@ const server = app.listen(process.env.PORT, ()=> {
 })
 
 //Handle Unhandled Promise Rejections
-process.on('unhandledRejection', (err) => {
-    console.log(`ERROR: ${err.message}`);
-    console.log('Shutting down the server due to Unhandled Promise Rejections');
-    server.close(()=> process.exit(1))
-})
+// process.on('unhandledRejection', (err) => {
+//     console.log(`ERROR: ${err.message}`);
+//     console.log('Shutting down the server due to Unhandled Promise Rejections');
+//     server.close(()=> process.exit(1))
+// })
