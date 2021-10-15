@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
+import ProductDetails from './components/ProductDetails';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
         <Header/>
         <div className="container container-fluid">
           <Route path="/" exact component={Home} />
+          <Route path="/product/:id" exact component={ProductDetails} />
         </div>
         <Footer/>
       </div>
