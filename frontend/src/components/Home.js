@@ -8,16 +8,24 @@ import  Pagination  from 'react-js-pagination';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 
+
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range)
 
 export default function Home({ match }) {
     const alert = useAlert();
     const dispatch = useDispatch();
+    
 
     const [ currentPage, setCurrentPage ] = useState(1);
-    const [ price, setPrice ] = useState([1, 1000])
-    const keyword = match.params.keyword
+    const [ price, setPrice ] = useState([1, 1000]);
+    const [ category, setCategory ] = useState('')
+    const keyword = match.params.keyword;
+
+    const categories = [
+        'All','Electronics','Cameras','Laptops','Accessories','Headphones','Food','Books','Clothes/Shoes',
+        'Beauty/Health','Sports','Outdoor','Home',
+    ]
    
     const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.products)
 
@@ -26,9 +34,9 @@ export default function Home({ match }) {
             return alert.error(error)
         };
 
-        dispatch(getProducts(keyword,currentPage, price));
-
-    }, [dispatch, alert, error, keyword, currentPage, price]);
+        dispatch(getProducts(keyword,currentPage, price, category));
+        console.log(category)
+    }, [dispatch, alert, error, keyword, currentPage, price, category]);
 
     const setCurrentPageNo = (pageNumber) => {
         setCurrentPage(pageNumber)
@@ -65,11 +73,28 @@ export default function Home({ match }) {
                                 />
                             </div>
                         </div>
+
                         <div className="row">
-                            {products && products.map(product => (
-                            <Product key={product._id} product = {product} />
-                            ))}
-                            
+                                <div className="col-lg-3">
+                                      <h4>Categories</h4>
+                                      <ul>
+                                          {categories.map(category => (
+                                              <li key={category}
+                                              style={{cursor : 'pointer'}}
+                                                onClick={()=>{
+                                                    if(category==='All'){
+                                                        setCategory('')
+                                                    } else {
+                                                        setCategory(category)
+                                                    }
+                                                 }}
+                                              >{category}</li>
+                                          ))}
+                                      </ul>
+                                </div>
+                                {products && products.map(product => (
+                                <Product key={product._id} product = {product} />
+                                ))}
                         </div>
                     </section>
 
