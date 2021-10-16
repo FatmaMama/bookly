@@ -6,6 +6,7 @@ import { getProductDetails, clearErrors } from '../redux/actions/productActions'
 import Loader from './layouts/Loader';
 import { Carousel, CarouselItem } from 'react-bootstrap'
 
+
 export default function ProductDetails({ match }) {
     const dispatch = useDispatch();
     const alert = useAlert()
@@ -113,6 +114,5 @@ export default function ProductDetails({ match }) {
     </div>
         )}
     </Fragment>
-        
     )
 }
