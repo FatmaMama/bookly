@@ -6,9 +6,16 @@ import Header from './components/layouts/Header';
 import ProductDetails from './components/ProductDetails';
 import Login from './components/user/Login';
 import Register from './components/user/Register';
-
+import store from './redux/store'
+import { useEffect } from 'react';
+import { loadUser } from './redux/actions/userActions';
 
 function App() {
+
+  useEffect(() => {
+    store.dispatch(loadUser())
+  }, [])
+
   return (
     <Router>
       <div className="App">
