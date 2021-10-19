@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
 import ProductDetails from './components/ProductDetails';
-import login from './components/user/login';
+import Login from './components/user/Login';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/search/:keyword" component={Home} />
           <Route path="/product/:id" exact component={ProductDetails} />
-          <Route path="login" component={login} />
+          <Route path="/login" component={Login} />
         </div>
         <Footer/>
       </div>

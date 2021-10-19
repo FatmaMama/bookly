@@ -49,7 +49,7 @@ export default function Home({ match }) {
                     <h1 id="products_heading">Latest Products</h1>
 
                     <section id="products" className="container mt-5">
-                        <div classname="row" >
+                        <div className="row" >
                             <div className="range col-lg-4 col-md-4 col-6 mt-5 mb-5">
                                 <Range className="range"
                                     marks={{

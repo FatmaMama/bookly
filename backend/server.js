@@ -4,11 +4,14 @@ const dotenv = require('dotenv');
 const ConnectDB = require('./config/database');
 const errorMiddleware = require('./middlewares/errors');
 const cookieParser = require('cookie-parser');
-// const cors = require('cors')
+const bodyparser = require('body-parser');
+const cloudinary = require('cloudinary');
+const fileUpload = require('express-fileupload')
 
 app.use(express.json());
+app.use(bodyparser.urlencoded({ extended : true }))
 app.use(cookieParser());
-// app.use(cors());
+app.use(fileUpload())
 
 //Handle Uncaught Exceptions
 process.on('uncaughtException', err => {
@@ -17,13 +20,18 @@ process.on('uncaughtException', err => {
     process.exit(1)
 });
 
-//set up config file
+//setup config file
 dotenv.config({ path: 'backend/config/config.env' });
 
 //connect DB
 ConnectDB();
 
-
+//setup cloudinary
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    secret_key: process.env.CLOUDINARY_API_SECRET
+})
 
 //import all routes
 const products = require('./routes/productRoutes');
