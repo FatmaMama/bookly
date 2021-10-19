@@ -9,6 +9,7 @@ import Register from './components/user/Register';
 import store from './redux/store'
 import { useEffect } from 'react';
 import { loadUser } from './redux/actions/userActions';
+import Profile from './components/user/Profile';
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route path="/product/:id" exact component={ProductDetails} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/me" component={Profile} />
         </div>
         <Footer/>
       </div>

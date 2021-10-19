@@ -3,13 +3,19 @@ import { Route, Link } from 'react-router-dom';
 import Search from './Search';
 import { useAlert } from 'react-alert';
 import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/actions/userActions';
 
 export default function Header() {
 
     const alert= useAlert();
     const dispatch= useDispatch();
 
-    const { user, loading } = useSelector(state => state.auth)
+    const { user, loading } = useSelector(state => state.auth);
+
+    const logoutHandler = () =>{
+        dispatch(logout())
+        alert.success("Logged out successfully")
+    }
 
     return (
     <Fragment>
@@ -34,7 +40,7 @@ export default function Header() {
 
                 {user ? (
                     <div className="ml-4 dropdown d-inline">
-                        <Link to="#!" class="btn dropdown-toggle text-white" type="button" 
+                        <Link to="#!" class="btn dropdown-toggle" type="button" 
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                             <figure className="avatar avatar-nav">
                                 <img src={user.avatar && user.avatar.url} alt={user && user.name} className="rounded-circle" />
@@ -54,7 +60,7 @@ export default function Header() {
                             <Link to="/me" className="dropdown-item">
                                 Profile
                             </Link>
-                            <Link to="/" className="dropdown-item text-danger">
+                            <Link to="/" className="dropdown-item text-danger" onClick={logoutHandler}>
                                 Logout
                             </Link>
                         </div>
