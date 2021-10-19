@@ -13,7 +13,7 @@ export default function Login({ history }) {
     const alert = useAlert();
     const dispatch = useDispatch()
 
-    const { loading, isAuthenticated, user, error} = useSelector(state => state.auth);
+    const { loading, isAuthenticated, error} = useSelector(state => state.auth);
 
     useEffect(() => {
         if(isAuthenticated){

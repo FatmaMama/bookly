@@ -11,7 +11,8 @@ const fileUpload = require('express-fileupload')
 app.use(express.json());
 app.use(bodyparser.urlencoded({ extended : true }))
 app.use(cookieParser());
-app.use(fileUpload())
+app.use(fileUpload());
+
 
 //Handle Uncaught Exceptions
 process.on('uncaughtException', err => {
@@ -27,10 +28,10 @@ dotenv.config({ path: 'backend/config/config.env' });
 ConnectDB();
 
 //setup cloudinary
-cloudinary.config({
+cloudinary.config ({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
-    secret_key: process.env.CLOUDINARY_API_SECRET
+    api_secret: process.env.CLOUDINARY_API_SECRET
 })
 
 //import all routes
@@ -48,9 +49,9 @@ const server = app.listen(process.env.PORT, ()=> {
     console.log(`server running on port : ${process.env.PORT} in ${process.env.NODE_ENV} mode` )
 })
 
-//Handle Unhandled Promise Rejections
-// process.on('unhandledRejection', (err) => {
-//     console.log(`ERROR: ${err.message}`);
-//     console.log('Shutting down the server due to Unhandled Promise Rejections');
-//     server.close(()=> process.exit(1))
-// })
+// Handle Unhandled Promise Rejections
+process.on('unhandledRejection', (err) => {
+    console.log(`ERROR: ${err.message}`);
+    console.log('Shutting down the server due to Unhandled Promise Rejections');
+    server.close(()=> process.exit(1))
+})
