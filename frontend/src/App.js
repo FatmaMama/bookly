@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { loadUser } from './redux/actions/userActions';
 import Profile from './components/user/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
+import UpdateProfile from './components/user/UpdateProfile';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <ProtectedRoute path="/me" exact component={Profile} />
+          <ProtectedRoute path="/me/update" component={UpdateProfile} />
         </div>
         <Footer/>
       </div>
