@@ -10,6 +10,7 @@ import store from './redux/store'
 import { useEffect } from 'react';
 import { loadUser } from './redux/actions/userActions';
 import Profile from './components/user/Profile';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
           <Route path="/product/:id" exact component={ProductDetails} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/me" component={Profile} />
+          <ProtectedRoute path="/me" exact component={Profile} />
         </div>
         <Footer/>
       </div>

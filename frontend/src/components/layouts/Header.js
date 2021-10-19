@@ -40,14 +40,14 @@ export default function Header() {
 
                 {user ? (
                     <div className="ml-4 dropdown d-inline">
-                        <Link to="#!" class="btn dropdown-toggle" type="button" 
+                        <Link to="#!" className="btn dropdown-toggle mr-4" type="button" 
                         id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
                             <figure className="avatar avatar-nav">
                                 <img src={user.avatar && user.avatar.url} alt={user && user.name} className="rounded-circle" />
                             </figure>
                             <span>{user && user.name}</span>
                         </Link>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {user && user.role !== "admin" ? (
                                 <Link  to="/orders/me" className="dropdown-item">
                                     Orders
