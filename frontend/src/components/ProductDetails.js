@@ -5,11 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProductDetails, clearErrors } from '../redux/actions/productActions';
 import Loader from './layouts/Loader';
 import { Carousel, CarouselItem } from 'react-bootstrap'
+import { addToCart } from '../redux/actions/cartActions';
 
 
 export default function ProductDetails({ match }) {
 
-    const [quantity, setQuantity] = useState('');
+    const [quantity, setQuantity] = useState(1);
 
     const dispatch = useDispatch();
     const alert = useAlert()
@@ -25,7 +26,7 @@ export default function ProductDetails({ match }) {
     }, [dispatch, alert, error, match.params.id]);
 
     const increaseQty = () => {
-        const count = document.querySelector('count')
+        const count = document.querySelector('.count')
 
         if(count.valueAsNumber >= product.stock) return ;
         const qty = count.valueAsNumber + 1;
@@ -33,11 +34,16 @@ export default function ProductDetails({ match }) {
     };
 
     const decreaseQty = () => {
-        const count = document.querySelector('count')
+        const count = document.querySelector('.count')
 
         if(count.valueAsNumber <= 1) return ;
         const qty = count.valueAsNumber - 1;
         setQuantity(qty)
+    };
+
+    const addItemToCart = () =>{
+        dispatch(addToCart(match.params.id, quantity));
+        alert.success('Item added to Cart')
     }
 
     return (
@@ -75,7 +81,8 @@ export default function ProductDetails({ match }) {
 
                     <span className="btn btn-primary plus" onClick={increaseQty} >+</span>
                 </div>
-                 <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4">Add to Cart</button>
+                 <button type="button" id="cart_btn" className="btn btn-primary d-inline ml-4" 
+                 onClick={addItemToCart} disabled={product.stock === 0} >Add to Cart</button>
 
                 <hr/>
 
