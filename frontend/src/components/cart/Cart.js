@@ -1,13 +1,28 @@
 import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../../redux/actions/cartActions';
 
 
 export default function Cart() {
 
     const dispatch = useDispatch();
 
-    const { cartItems } = useSelector(state => state.cart)
+    const { cartItems } = useSelector(state => state.cart);
+
+    const increaseQty = (id, quantity, stock) => {
+        const newQty = quantity + 1
+
+        if(newQty > stock) return ;
+        dispatch(addToCart(id,newQty))
+    };
+
+    const decreaseQty = (id, quantity) => {
+        const newQty = quantity - 1
+
+        if(newQty < 1) return ;
+        dispatch(addToCart(id,newQty))
+    };
 
     return (
         <Fragment>
@@ -37,10 +52,15 @@ export default function Cart() {
 
                                             <div className="col-4 col-lg-3 mt-4 mt-lg-0">
                                                 <div className="stockCounter d-inline">
-                                                    <span className="btn btn-danger minus">-</span>
-                                                    <input type="number" className="form-control count d-inline" value={item.quantity} readOnly />
+                                                    <span className="btn btn-danger minus" onClick={()=>{
+                                                        decreaseQty(item.product, item.quantity)
+                                                    }} >-</span>
+                                                    <input type="number" className="form-control count d-inline" 
+                                                    value={item.quantity} readOnly />
 
-                                                    <span className="btn btn-primary plus">+</span>
+                                                    <span className="btn btn-primary plus" onClick={()=>{
+                                                        increaseQty(item.product, item.quantity, item.stock)
+                                                    }}>+</span>
                                                 </div>
                                             </div>
 
