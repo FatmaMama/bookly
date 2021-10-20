@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../../redux/actions/cartActions';
+import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
 
 
 export default function Cart() {
@@ -24,9 +24,13 @@ export default function Cart() {
         dispatch(addToCart(id,newQty))
     };
 
+    const removeItemHandler = (id) => {
+        dispatch(removeFromCart(id))
+    }
+
     return (
         <Fragment>
-            {cartItems.length === 0 ? <h2>Your Cart is empty...</h2> : (
+            {cartItems.length === 0 ? <h2 className="mt-5">Your Cart is empty...</h2> : (
                 <Fragment>
                     <h2 className="mt-5">Your Cart: <b>{cartItems.length} items</b></h2>
         
@@ -35,7 +39,7 @@ export default function Cart() {
                             {cartItems.map(item => (
                                 <Fragment>
                                     <hr/>
-                                    <div className="cart-item">
+                                    <div className="cart-item" key={item.product}>
                                         <div className="row">
                                             <div className="col-4 col-lg-3">
                                                 <img src={item.image} alt="Laptop" height="90" width="115" />
@@ -65,7 +69,10 @@ export default function Cart() {
                                             </div>
 
                                             <div className="col-4 col-lg-1 mt-4 mt-lg-0">
-                                                <i id="delete_cart_item" className="fa fa-trash btn btn-danger"></i>
+                                                <i id="delete_cart_item" className="fa fa-trash btn btn-danger"
+                                                onClick={()=>{
+                                                    removeItemHandler(item.product)
+                                                }}></i>
                                             </div>
 
                                         </div>
