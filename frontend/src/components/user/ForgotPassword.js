@@ -21,7 +21,7 @@ export default function ForgotPassword() {
             alert.error(error);
             dispatch(clearErrors())
         }
-    }, [dispatch, alert, error]);
+    }, [dispatch, alert, error, message]);
 
     const submitHandler = (e) =>{
         e.preventDefault();
