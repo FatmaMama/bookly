@@ -26,6 +26,14 @@ export default function Cart() {
 
     const removeItemHandler = (id) => {
         dispatch(removeFromCart(id))
+    };
+
+    const getCartCount = () => {
+        return cartItems.reduce((qty, item) => Number(item.quantity) + qty, 0)
+    }
+
+    const getCartTotalPrice = () => {
+        return cartItems.reduce((totalPrice, item) => Number(item.price * item.quantity) + totalPrice, 0).toFixed(3)
     }
 
     return (
@@ -51,7 +59,7 @@ export default function Cart() {
 
 
                                             <div className="col-4 col-lg-2 mt-4 mt-lg-0">
-                                                <p id="card_item_price">{item.price}</p>
+                                                <p id="card_item_price">${(item.price * item.quantity).toFixed(3)}</p>
                                             </div>
 
                                             <div className="col-4 col-lg-3 mt-4 mt-lg-0">
@@ -86,8 +94,8 @@ export default function Cart() {
                             <div id="order_summary">
                                 <h4>Order Summary</h4>
                                 <hr />
-                                <p>Subtotal:  <span className="order-summary-values">3 (Units)</span></p>
-                                <p>Est. total: <span className="order-summary-values">$765.56</span></p>
+                                <p>Subtotal:  <span className="order-summary-values">{getCartCount()} (Units)</span></p>
+                                <p>Est. total: <span className="order-summary-values">{getCartTotalPrice()}</span></p>
                 
                                 <hr />
                                 <button id="checkout_btn" className="btn btn-primary btn-block">Check out</button>
