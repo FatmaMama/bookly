@@ -18,6 +18,7 @@ import NewPassword from './components/user/NewPassword';
 import Cart from './components/cart/Cart';
 import Shipping from './components/cart/Shipping';
 import ConfirmOrder from './components/cart/ConfirmOrder';
+import OrderSuccess from './components/cart/OrderSuccess';
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
           <ProtectedRoute path="/shipping" component={Shipping} exact/>
           <ProtectedRoute path="/order/confirm" component={ConfirmOrder} exact/>
           <ProtectedRoute path="/order/new" component={ConfirmOrder} exact/>
+          <ProtectedRoute path="/success" component={OrderSuccess} exact/>
 
           <Route path="/password/forgot" component={ForgotPassword} exact />
           <Route path="/password/reset/:token" component={NewPassword} exact />
