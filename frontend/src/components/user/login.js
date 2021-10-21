@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { login, clearErrors } from '../../redux/actions/userActions';
 import Loader from '../layouts/Loader'
 
-export default function Login({ history }) {
+export default function Login({ history, location }) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -15,9 +15,11 @@ export default function Login({ history }) {
 
     const { loading, isAuthenticated, error} = useSelector(state => state.auth);
 
+    const redirect = location.search ? location.search.split('=')[1] : '/'
+
     useEffect(() => {
         if(isAuthenticated){
-            history.push('/')
+            history.push(redirect)
         }
         if(error){
             alert.error(error);

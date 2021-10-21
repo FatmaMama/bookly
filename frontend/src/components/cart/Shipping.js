@@ -1,21 +1,30 @@
-import React, {Fragment} from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { saveShippingInfo } from '../../redux/actions/cartActions';
 
-export default function Shipping() {
+export default function Shipping({history}) {
 
-    const [shippingData, setShippingData] = useState({
+    const { shippingInfo } = useSelector(state => state.cart);
 
-    })
+    
+    const [address,setAddress] = useState(shippingInfo.address);
+    const [city,setCity] = useState(shippingInfo.city);
+    const [phoneNo,setPhoneNo] = useState(shippingInfo.phoneNo);
+    const [postalCode,setPostalCode] = useState(shippingInfo.postalCode);
+    const country = "tunisia";
 
-    const dispatch = useDispatch
+    const dispatch = useDispatch();
 
-    const { shippingInfo } = useSelector(state => state.cart)
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(saveShippingInfo({address, city, phoneNo, postalCode, country}));
+        history.push('/confirm')
+    };
 
     return (
             <div className="row wrapper">
                 <div className="col-10 col-lg-5">
-                    <form className="shadow-lg">
+                    <form className="shadow-lg" onSubmit={submitHandler}>
                         <h1 className="mb-4">Shipping Info</h1>
                         <div className="form-group">
                             <label for="address_field">Address</label>
@@ -23,7 +32,9 @@ export default function Shipping() {
                                 type="text"
                                 id="address_field"
                                 className="form-control"
-                                value=''
+                                name="address"
+                                value={address}
+                                onChange={(e) => setAddress(e.target.value)}
                                 required
                             />
                         </div>
@@ -34,7 +45,9 @@ export default function Shipping() {
                                 type="text"
                                 id="city_field"
                                 className="form-control"
-                                value=''
+                                name="city"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
                                 required
                             />
                         </div>
@@ -45,7 +58,9 @@ export default function Shipping() {
                                 type="phone"
                                 id="phone_field"
                                 className="form-control"
-                                value=''
+                                name="phoneNo"
+                                value={phoneNo}
+                                onChange={(e) => setPhoneNo(e.target.value)}
                                 required
                             />
                         </div>
@@ -56,7 +71,9 @@ export default function Shipping() {
                                 type="number"
                                 id="postal_code_field"
                                 className="form-control"
-                                value=''
+                                name="postalCode"
+                                value={postalCode}
+                                onChange={(e) => setPostalCode(e.target.value)}
                                 required
                             />
                         </div>
@@ -66,11 +83,12 @@ export default function Shipping() {
                             <select
                                 id="country_field"
                                 className="form-control"
-                                value=''
+                                name="country"
+                                value={country}
                                 required
                             >
                                     <option>
-                                        USA
+                                        Tunisia
                                     </option>
 
                             </select>
