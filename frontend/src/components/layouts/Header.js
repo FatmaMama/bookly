@@ -53,15 +53,14 @@ export default function Header() {
                             <span>{user && user.name}</span>
                         </Link>
                         <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            {user && user.role !== "admin" ? (
-                                <Link  to="/orders/me" className="dropdown-item">
-                                    Orders
-                                </Link>
-                            ) : (
-                                <Link  to="/dashboard" className="dropdown-item">
+                            {user && user.role === "admin" && (
+                               <Link  to="/dashboard" className="dropdown-item">
                                     Dashboard
                                 </Link>
-                            )}
+                            )} 
+                             <Link  to="/orders/me" className="dropdown-item">
+                                    Orders
+                                </Link>
                             <Link to="/me" className="dropdown-item">
                                 Profile
                             </Link>
