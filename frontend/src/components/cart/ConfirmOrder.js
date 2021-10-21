@@ -42,8 +42,13 @@ export default function ConfirmOrder({ history }) {
     },[dispatch, alert, error]);
 
     const placeOrderHandler = (order) => {
-        dispatch(createOrder(order))
-        history.push('/success')
+        dispatch(createOrder(order));
+        history.push('/success');
+
+        if(error){
+            dispatch(clearErrors())
+            alert.error(error)
+        }
     }
     
     return (
