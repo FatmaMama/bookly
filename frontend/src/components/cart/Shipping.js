@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveShippingInfo } from '../../redux/actions/cartActions';
+import CheckoutSteps from './CheckoutSteps';
+
 
 export default function Shipping({history}) {
 
@@ -11,17 +13,19 @@ export default function Shipping({history}) {
     const [city,setCity] = useState(shippingInfo.city);
     const [phoneNo,setPhoneNo] = useState(shippingInfo.phoneNo);
     const [postalCode,setPostalCode] = useState(shippingInfo.postalCode);
-    const country = "tunisia";
+    const country = "Tunisia";
 
     const dispatch = useDispatch();
 
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(saveShippingInfo({address, city, phoneNo, postalCode, country}));
-        history.push('/confirm')
+        history.push('/order/confirm')
     };
 
     return (
+        <Fragment>
+            <CheckoutSteps shipping />
             <div className="row wrapper">
                 <div className="col-10 col-lg-5">
                     <form className="shadow-lg" onSubmit={submitHandler}>
@@ -104,5 +108,6 @@ export default function Shipping({history}) {
                     </form>
                 </div>
             </div>
+        </Fragment>
     )
 }
