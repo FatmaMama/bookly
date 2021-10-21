@@ -1,10 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CheckoutSteps from './CheckoutSteps';
+import { useAlert } from 'react-alert';
+import { clearErrors } from '../../redux/actions/productActions';
+import { createOrder } from '../../redux/actions/orderActions';
 
 
 export default function ConfirmOrder({ history }) {
+
+    const dispatch = useDispatch();
+    const alert = useAlert();
 
     const { cartItems, shippingInfo } = useSelector(state => state.cart);
     const { user } = useSelector(state => state.auth);
@@ -15,7 +21,30 @@ export default function ConfirmOrder({ history }) {
     const taxPrice = Number((0.05 * itemsPrice).toFixed(2));
     const totalPrice = (itemsPrice + shippingPrice + taxPrice).toFixed(2);
 
-    const [isPayment, setIsPayment] = useState(false)
+    const [isPayment, setIsPayment] = useState(false);
+
+    const { loading, error } = useSelector(state => state.newOrder);
+
+    const order = {
+        orderItems : cartItems,
+        shippingInfo,
+        itemsPrice,
+        shippingPrice,
+        taxPrice,
+        totalPrice
+    };
+
+    useEffect(() => {
+        if(error) {
+            dispatch(clearErrors());
+            alert.error(error)
+        }
+    },[dispatch, alert, error]);
+
+    const placeOrderHandler = (order) => {
+        dispatch(createOrder(order))
+        history.push('/success')
+    }
     
     return (
         <Fragment>
@@ -80,7 +109,9 @@ export default function ConfirmOrder({ history }) {
                 <h4>Payment</h4>
                 <h6>Cash on delivery</h6>
                 <p>Pay with cash upon delivery</p>
-                <button id="checkout_btn" className="btn btn-primary btn-block py-3" >Place Order</button>
+                <button id="checkout_btn" className="btn btn-primary btn-block py-3" 
+                onClick={() => placeOrderHandler(order)} 
+                disabled ={loading? true : false} >Place Order</button>
                 </div>}
 			</div>
         </Fragment>
