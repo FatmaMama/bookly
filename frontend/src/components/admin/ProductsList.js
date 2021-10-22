@@ -4,17 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import { MDBDataTable } from 'mdbreact';
 import Loader from '../layouts/Loader';
-import { myOrders, clearErrors } from '../../redux/actions/orderActions';
+import { getAdminProducts } from '../../redux/actions/productActions';
 
-export default function ListOrders() {
+export default function ProductsList() {
 
     const alert = useAlert();
     const dispatch = useDispatch();
 
-    const {loading, error, orders} = useSelector(state => state.myOrders);
+    const {loading, error, products} = useSelector(state => state.products);
 
     useEffect(() => {
-        dispatch(myOrders())
+        dispatch(getAdminProducts())
         
         if(error){
             dispatch(clearErrors())
@@ -22,32 +22,32 @@ export default function ListOrders() {
         }
     }, [dispatch, alert, error]);
 
-    const setOrders = () => {
+    const setProducts = () => {
         const data = {
             columns : [
                 {
-                    label: 'Order ID',
+                    label: 'ID',
                     field: 'id',
                     sort: 'asc',
                 },
                 {
-                    label: 'Num of Items',
-                    field: 'numOfItems',
+                    label: 'Name',
+                    field: 'name',
                     sort: 'asc',
                 },
                 {
-                    label: 'Amount',
-                    field: 'amount',
+                    label: 'Price',
+                    field: 'price',
                     sort: 'asc',
                 },
                 {
-                    label: 'Status',
-                    field: 'status',
+                    label: 'Stock',
+                    field: 'stock',
                     sort: 'asc',
                 },
                 {
                     label: 'Actions',
-                    field: 'actions'
+                    field: 'actions',
                 }
             ],
             rows : []
@@ -71,17 +71,8 @@ export default function ListOrders() {
     }
 
     return (
-        <Fragment>
-            <h1 className="my-5">My Orders</h1>
-            {loading ? <Loader/> : (
-                <MDBDataTable 
-                    data={setOrders()}
-                    className="mx-3"
-                    bordered
-                    hover
-                    striped
-                />
-            )}
-        </Fragment>
+        <div>
+            
+        </div>
     )
 }

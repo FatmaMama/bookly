@@ -16,7 +16,8 @@ const reducers = combineReducers({
     newOrder : newOrderReducer,
     myOrders : myOrdersReducer,
     orderDetails : orderDetailsReducer,
-    newReview : newReviewReducer
+    newReview : newReviewReducer,
+ 
 });
 
 let initialState = {
