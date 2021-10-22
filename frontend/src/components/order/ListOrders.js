@@ -15,7 +15,7 @@ export default function ListOrders() {
 
     useEffect(() => {
         dispatch(myOrders())
-
+        
         if(error){
             dispatch(clearErrors())
             alert.error(error)
@@ -61,7 +61,7 @@ export default function ListOrders() {
                 amount : `$${order.totalPrice}`,
                 status : order.orderStatus && String(order.orderStatus).includes('Delivered')
                 ? <p style={{color : 'green'}}>{order.orderStatus}</p>
-                : <p style={{color : 'green'}}>{order.orderStatus}</p>,
+                : <p style={{color : 'red'}}>{order.orderStatus}</p>,
                 actions : 
                     <Link to={`/order/${order._id}`} className="btn btn_primary">
                         <i className="fa fa-eye"></i>
