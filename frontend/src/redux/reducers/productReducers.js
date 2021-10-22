@@ -91,12 +91,12 @@ export const newReviewReducer = (state = {}, action) => {
         case NEW_REVIEW_RESET :
             return {
                 ...state,
-                error: null
+                success : false
             }
         case CLEAR_ERRORS :
             return {
                  ...state,
-                success : false
+                error : null
             }
         default : 
             return state

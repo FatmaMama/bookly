@@ -8,6 +8,7 @@ import Loader from './layouts/Loader';
 import { Carousel, CarouselItem } from 'react-bootstrap'
 import { addToCart } from '../redux/actions/cartActions';
 import { NEW_REVIEW_RESET } from '../redux/constants/productConstants';
+import ListReviews from './review/ListReviews';
 
 
 export default function ProductDetails({ match }) {
@@ -114,6 +115,7 @@ export default function ProductDetails({ match }) {
     return (
         <Fragment>
         {  loading ? <Loader/> : (
+            <Fragment>
             <div className="row f-flex justify-content-around">
             <div className="col-12 col-lg-5 img-fluid" id="product_image">
                <Carousel pause='hover'>
@@ -207,10 +209,13 @@ export default function ProductDetails({ match }) {
 
                     </div>
 						
+                </div>
             </div>
-
         </div>
-    </div>
+        {product.reviews && product.reviews.length > 0 && (
+           <ListReviews reviews={product.reviews} />
+        )}
+        </Fragment>
         )}
     </Fragment>
     )
