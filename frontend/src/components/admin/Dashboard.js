@@ -1,8 +1,26 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getAdminProducts } from '../../redux/actions/productActions';
 import SideBar from './SideBar'
 
 export default function Dashboard() {
+
+    const dispatch = useDispatch();
+
+    const { products }= useSelector(state => state.products);
+
+    let outOfStock = 0
+    products.forEach(product => {
+        if(product.stock === 0){
+            outOfStock += 1
+        }
+    })
+
+    useEffect(() => {
+        dispatch(getAdminProducts())
+    }, [dispatch])
+
     return (
         <Fragment>
             <div className="row">
@@ -27,7 +45,7 @@ export default function Dashboard() {
                                 <div className="col-xl-3 col-sm-6 mb-3">
                                     <div className="card text-white bg-success o-hidden h-100">
                                         <div className="card-body">
-                                            <div className="text-center card-font-size">Products<br /> <b>56</b></div>
+                                            <div className="text-center card-font-size">Products<br /> <b>{products && products.length}</b></div>
                                         </div>
                                         <Link className="card-footer text-white clearfix small z-1" to="/admin/products">
                                             <span className="float-left">View Details</span>
@@ -59,7 +77,7 @@ export default function Dashboard() {
                                         <div className="card-body">
                                             <div className="text-center card-font-size">Users<br /> <b>45</b></div>
                                         </div>
-                                        <Link className="card-footer text-white clearfix small z-1" href="/admin/users">
+                                        <Link className="card-footer text-white clearfix small z-1" to="/admin/users">
                                             <span className="float-left">View Details</span>
                                             <span className="float-right">
                                                 <i className="fa fa-angle-right"></i>
@@ -72,7 +90,7 @@ export default function Dashboard() {
                                 <div className="col-xl-3 col-sm-6 mb-3">
                                     <div className="card text-white bg-warning o-hidden h-100">
                                         <div className="card-body">
-                                            <div className="text-center card-font-size">Out of Stock<br /> <b>4</b></div>
+                                            <div className="text-center card-font-size">Out of Stock<br /> <b>{outOfStock}</b></div>
                                         </div>
                                     </div>
                                 </div>
