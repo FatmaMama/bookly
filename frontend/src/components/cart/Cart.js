@@ -37,7 +37,7 @@ export default function Cart({history}) {
     };
 
     const checkoutHandler = () => {
-        history.push('./login?redirect=shipping')
+        history.push('/login?redirect=shipping')
     }
 
     return (
