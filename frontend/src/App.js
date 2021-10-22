@@ -21,6 +21,7 @@ import ConfirmOrder from './components/cart/ConfirmOrder';
 import OrderSuccess from './components/cart/OrderSuccess';
 import ListOrders from './components/order/ListOrders';
 import OrderDetails from './components/order/OrderDetails';
+import Dashboard from './components/admin/Dashboard';
 
 function App() {
 
@@ -55,6 +56,8 @@ function App() {
           <ProtectedRoute path="/order/:id" component={OrderDetails} exact />
           
         </div>
+          <ProtectedRoute path="/dashboard" component={Dashboard} exact />
+
         <Footer/>
       </div>
     </Router>
