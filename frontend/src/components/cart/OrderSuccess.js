@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { resetCart } from '../../redux/actions/cartActions';
+
 
 export default function OrderSuccess() {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(resetCart())
+    }, [])
+
     return (
         <div className="row justify-content-center">
             <div className="col-6 mt-5 text-center">
