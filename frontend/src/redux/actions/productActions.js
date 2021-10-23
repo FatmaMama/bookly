@@ -197,7 +197,7 @@ export const getProductReviews = (id) => async (dispatch) => {
 
         dispatch({ 
             type : GET_REVIEWS_SUCCESS,
-            payload : data.products
+            payload : data.reviews
          })
 
     } catch (error) {
