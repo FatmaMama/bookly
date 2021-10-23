@@ -36,8 +36,8 @@ export default function ConfirmOrder({ history }) {
 
     useEffect(() => {
         if(error) {
+            alert.error(error);
             dispatch(clearErrors());
-            alert.error(error)
         }
     },[dispatch, alert, error]);
 
