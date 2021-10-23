@@ -26,16 +26,6 @@ exports.addProduct = catchAsyncErrors(async (req, res, next) => {
             url : result.secure_url
         })
     }
-    // images.forEach(image => {
-    //     const result = await cloudinary.v2.uploader.upload(image, {
-    //         folder: 'products'
-    //     })
-
-    //     imagesLinks.push({
-    //         public_id : result.public_id,
-    //         url : result.secure_url
-    //     })
-    // })
 
     req.body.images = imagesLinks;
     req.body.user = req.user.id;
@@ -120,6 +110,10 @@ exports.deleteProduct = catchAsyncErrors(async (req,res, next) => {
         if(!product) {
             return next(new ErrorHandler('Product Not Found', 404))
         };
+
+        for(let i=0; i<product.images.length; i++){
+            const result = await cloudinary.v2.uploader.destroy(product.images[i].public_id)
+        }
 
         product.remove();
 

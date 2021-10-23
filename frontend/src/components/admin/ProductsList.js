@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import { MDBDataTable } from 'mdbreact';
 import Loader from '../layouts/Loader';
-import { getAdminProducts, clearErrors } from '../../redux/actions/productActions';
+import { getAdminProducts, clearErrors, deleteProduct } from '../../redux/actions/productActions';
 import SideBar from './SideBar';
+import { DELETE_PRODUCT_RESET } from '../../redux/constants/productConstants';
 
-export default function ProductsList() {
+export default function ProductsList({history}) {
 
     const alert = useAlert();
     const dispatch = useDispatch();
 
     const {loading, error, products} = useSelector(state => state.products);
+    const {error : deleteError, isDeleted} = useSelector(state => state.product)
 
     useEffect(() => {
         dispatch(getAdminProducts())
@@ -21,7 +23,19 @@ export default function ProductsList() {
             dispatch(clearErrors())
             alert.error(error)
         }
-    }, [dispatch, alert, error]);
+
+        if(deleteError){
+            alert.error(deleteError)
+            dispatch(clearErrors())
+        }
+
+        if(isDeleted){
+            alert.success('Product deleted successfully');
+            history.push('/admin/products')
+            dispatch({ type : DELETE_PRODUCT_RESET})
+        }
+
+    }, [dispatch, alert, error, isDeleted, deleteError, history]);
 
     const setProducts = () => {
         const data = {
@@ -65,13 +79,17 @@ export default function ProductsList() {
                     <Link to={`/admin/product/${product._id}`} className="btn py-1 px-2" id="blue">
                         <i className="fa fa-pencil"></i>
                     </Link>
-                    <button id="red" className="btn py-1 px-2 ml-2" >
+                    <button id="red" className="btn py-1 px-2 ml-2" onClick={() => deleteProductHandler(product._id)}>
                         <i className="fa fa-trash"></i>
                     </button>
                 </Fragment>
             })
         });
         return data
+    };
+
+    const deleteProductHandler = (id) => {
+        dispatch(deleteProduct(id))
     }
 
     return (
