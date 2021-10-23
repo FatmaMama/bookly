@@ -5,7 +5,8 @@ import { useAlert } from 'react-alert';
 import { MDBDataTable } from 'mdbreact';
 import Loader from '../layouts/Loader';
 import SideBar from './SideBar';
-import { clearErrors, getProductReviews } from '../../redux/actions/productActions';
+import { clearErrors, deleteReview, getProductReviews } from '../../redux/actions/productActions';
+import { DELETE_REVIEW_RESET } from '../../redux/constants/productConstants';
 
 
 export default function ProductReviews() {
@@ -16,6 +17,7 @@ export default function ProductReviews() {
     const dispatch = useDispatch();
 
     const {loading, error, reviews} = useSelector(state => state.productReviews);
+    const { isDeleted } = useSelector(state => state.review);
     
     useEffect(() => {
         
@@ -28,17 +30,16 @@ export default function ProductReviews() {
             dispatch(getProductReviews(productId))
         }
 
-    //    if(isDeleted){
-    //         alert.success('User deleted successfully');
-    //         history.push('/admin/users')
-    //         dispatch({ type : DELETE_USER_RESET})
-    //     }
+       if(isDeleted){
+            alert.success('Review deleted successfully');
+            dispatch({ type : DELETE_REVIEW_RESET})
+        }
 
-    }, [dispatch, alert, error, productId ]);
+    }, [dispatch, alert, error, productId, isDeleted ]);
 
-    // const deleteUserHandler = (id) => {
-    //     dispatch(deleteUser(id))
-    // }
+    const deleteReviewHandler = (id) => {
+        dispatch(deleteReview(id, productId))
+    }
 
     const submitHandler= (e) => {
         e.preventDefault();
@@ -84,7 +85,7 @@ export default function ProductReviews() {
                 user : review.name,
                 actions : 
                 
-                    <button id="red" className="btn py-1 px-2 ml-2" >
+                    <button id="red" className="btn py-1 px-2 ml-2" onClick={()=> deleteReviewHandler(review._id)} >
                     <i className="fa fa-trash"></i>
                     </button>
                 
