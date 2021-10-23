@@ -62,10 +62,10 @@ export default function ProductsList() {
                 stock: product.stock,
                 actions : 
                 <Fragment>
-                    <Link to={`/admin/product/${product._id}`} className="btn btn_primary py-1 px-2">
+                    <Link to={`/admin/product/${product._id}`} className="btn py-1 px-2" id="blue">
                         <i className="fa fa-pencil"></i>
                     </Link>
-                    <button className="btn btn_danger py-1 px-2 ml-2">
+                    <button id="red" className="btn py-1 px-2 ml-2" >
                         <i className="fa fa-trash"></i>
                     </button>
                 </Fragment>
