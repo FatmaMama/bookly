@@ -5,15 +5,17 @@ import { useAlert } from 'react-alert';
 import { MDBDataTable } from 'mdbreact';
 import Loader from '../layouts/Loader';
 import SideBar from './SideBar';
-import { clearErrors, getAllOrders } from '../../redux/actions/orderActions';
+import { clearErrors, deleteOrder, getAllOrders } from '../../redux/actions/orderActions';
+import { DELETE_ORDER_RESET } from '../../redux/constants/orderConstants';
 
 
-export default function OrdersList() {
+export default function OrdersList({history}) {
 
     const alert = useAlert();
     const dispatch = useDispatch();
 
     const {loading, error, orders} = useSelector(state => state.allOrders);
+    const { isDeleted } = useSelector(state => state.order)
 
     useEffect(() => {
         dispatch(getAllOrders())
@@ -24,13 +26,17 @@ export default function OrdersList() {
         }
 
        
-        // if(isDeleted){
-        //     alert.success('Product deleted successfully');
-        //     history.push('/admin/products')
-        //     dispatch({ type : DELETE_PRODUCT_RESET})
-        // }
+        if(isDeleted){
+            alert.success('Order deleted successfully');
+            history.push('/admin/orders')
+            dispatch({ type : DELETE_ORDER_RESET})
+        }
 
-    }, [dispatch, alert, error]);
+    }, [dispatch, alert, error, isDeleted, history]);
+
+    const deleteOrderHandler = (id) => {
+        dispatch(deleteOrder(id))
+    }
 
     const setOrders = () => {
         const data = {
@@ -76,7 +82,7 @@ export default function OrdersList() {
                     <Link to={`/admin/order/${order._id}`} id="blue" className="btn">
                         <i className="fa fa-eye"></i>
                     </Link>
-                    <button id="red" className="btn py-1 px-2 ml-2">
+                    <button id="red" className="btn py-1 px-2 ml-2" onClick={() =>{deleteOrderHandler(order._id)} } >
                     <i className="fa fa-trash"></i>
                     </button>
                 </Fragment>
