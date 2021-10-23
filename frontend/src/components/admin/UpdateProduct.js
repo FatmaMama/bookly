@@ -1,13 +1,13 @@
 import React, {Fragment, useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
-import { clearErrors, newProduct } from '../../redux/actions/productActions';
+import { clearErrors, getProductDetails, updateProduct} from '../../redux/actions/productActions';
 import SideBar from './SideBar';
-import { NEW_PRODUCT_RESET } from '../../redux/constants/productConstants';
+import { UPDATE_PRODUCT_RESET } from '../../redux/constants/productConstants';
 
-export default function NewProduct({history}) {
+export default function UpdateProduct({match, history}) {
 
-    const [product, setProduct] = useState({
+    const [productToUpdate, setProductToUpdate] = useState({
         name: '',
         price: 0,
         description: '',
@@ -15,9 +15,10 @@ export default function NewProduct({history}) {
         stock: 0,
         seller: ''
     });
-    const { name, price, description, category, stock, seller } = product;
+    const { name, price, description, category, stock, seller } = productToUpdate;
     const [images, setImages] = useState([]);
     const [imagesPreview, setImagesPreview] = useState([]);
+    const [oldImages, setOldImages] = useState([]);
 
     const categories = [
         'Electronics','Cameras','Laptops','Accessories','Headphones','Food','Books','Clothes/Shoes',
@@ -25,21 +26,40 @@ export default function NewProduct({history}) {
     ]
 
     const alert = useAlert();
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
-    const { loading, success, error} = useSelector(state => state.newProduct);
+    const { error, product } = useSelector(state => state.productDetails);
+    const { error : updateError , loading, isUpdated } = useSelector(state => state.product);
 
     useEffect(() => {
-        if(success){
+        if(product && product._id !== match.params.id){
+            dispatch(getProductDetails(match.params.id))
+        } else {
+            setProductToUpdate({
+                name: product.name,
+                price: product.price,
+                description: product.description,
+                category: product.category,
+                stock: product.stock,
+                seller: product.seller
+            })
+            setOldImages(product.images)
+        }
+
+        if(isUpdated){
             history.push('/admin/products');
-            alert.success('Product added successfully');
-            dispatch({ type : NEW_PRODUCT_RESET})
+            alert.success('Product updated successfully');
+            dispatch({ type : UPDATE_PRODUCT_RESET})
         }
         if(error){
             alert.error(error);
             dispatch(clearErrors())
         }
-    }, [dispatch, alert, error, success, history]);
+        if(updateError){
+            alert.error(updateError);
+            dispatch(clearErrors())
+        }
+    }, [dispatch, alert, error, isUpdated, history, updateError, product, match.params.id]);
 
     const submitHandler = (e) =>{
         e.preventDefault();
@@ -54,7 +74,7 @@ export default function NewProduct({history}) {
         images.forEach(image => {
             formData.append('images', image)
         })
-        dispatch(newProduct(formData))
+        dispatch(updateProduct(product._id, formData))
     };
 
     const onChange = (e) => {
@@ -64,6 +84,8 @@ export default function NewProduct({history}) {
 
             setImagesPreview([]);
             setImages([]);
+            setOldImages([]);
+
 
             files.forEach(file => {
                 const reader = new FileReader();
@@ -78,7 +100,7 @@ export default function NewProduct({history}) {
             })
 
         } else {
-            setProduct({...product, [e.target.name] : [e.target.value]})
+            setProductToUpdate({...productToUpdate, [e.target.name] : [e.target.value]})
         }
     }
 
@@ -93,10 +115,10 @@ export default function NewProduct({history}) {
                     <Fragment>
                     <div className="wrapper my-5"> 
                         <form className="shadow-lg" encType='multipart/form-data' onSubmit={submitHandler}>
-                            <h1 className="mb-4">New Product</h1>
+                            <h1 className="mb-4">Update Product</h1>
 
                             <div className="form-group">
-                            <label for="name_field">Name</label>
+                            <label htmlFor="name_field">Name</label>
                             <input
                                 type="text"
                                 id="name_field"
@@ -108,7 +130,7 @@ export default function NewProduct({history}) {
                             </div>
 
                             <div className="form-group">
-                                <label for="price_field">Price</label>
+                                <label htmlFor="price_field">Price</label>
                                 <input
                                 type="text"
                                 id="price_field"
@@ -120,13 +142,13 @@ export default function NewProduct({history}) {
                             </div>
 
                             <div className="form-group">
-                                <label for="description_field">Description</label>
+                                <label htmlFor="description_field">Description</label>
                                 <textarea className="form-control" id="description_field" rows="8" name= "description"
                                 value={description} onChange={onChange}></textarea>
                             </div>
 
                             <div className="form-group">
-                                <label for="category_field">Category</label>
+                                <label htmlFor="category_field">Category</label>
                                 <select className="form-control" id="category_field" 
                                 name= "category"
                                 value={category}
@@ -138,7 +160,7 @@ export default function NewProduct({history}) {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label for="stock_field">Stock</label>
+                                <label htmlFor="stock_field">Stock</label>
                                 <input
                                 type="number"
                                 id="stock_field"
@@ -150,7 +172,7 @@ export default function NewProduct({history}) {
                             </div>
 
                             <div className="form-group">
-                                <label for="seller_field">Seller Name</label>
+                                <label htmlFor="seller_field">Seller Name</label>
                                 <input
                                 type="text"
                                 id="seller_field"
@@ -174,10 +196,16 @@ export default function NewProduct({history}) {
                                             onChange={onChange}
                                             multiple
                                         />
-                                        <label className='custom-file-label' for='customFile'>
+                                        <label className='custom-file-label' tmlFor='customFile'>
                                             Choose Images
                                         </label>
                                     </div>
+
+                                    {oldImages && oldImages.map(image => (
+                                        <img key={image} className="mt-3 mr-2" src={image.url} alt={image.url} 
+                                        width="55" height="52" />
+                                    ))}
+
                                     {imagesPreview.map(image => (
                                         <img key={image} className="mt-3 mr-2" src={image} alt="images Preview" 
                                         width="55" height="52" />
@@ -191,7 +219,7 @@ export default function NewProduct({history}) {
                             className="btn btn-block py-3"
                             disabled= {loading? true : false}
                             >
-                            CREATE
+                            UPDATE
                             </button>
 
                         </form>
