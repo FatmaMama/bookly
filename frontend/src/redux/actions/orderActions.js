@@ -17,7 +17,6 @@ import {
     UPDATE_ORDER_FAIL,
     DELETE_ORDER_REQUEST,
     DELETE_ORDER_SUCCESS,
-    DELETE_ORDER_RESET,
     DELETE_ORDER_FAIL,
     CLEAR_ERRORS
 } from '../constants/orderConstants';
