@@ -25,6 +25,9 @@ import { LOGIN_REQUEST,
     ALL_USERS_REQUEST,
     ALL_USERS_SUCCESS,
     ALL_USERS_FAIL,
+    UPDATE_USER_REQUEST,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_FAIL,
     CLEAR_ERRORS
 } from "../constants/userConstants";
 
@@ -238,6 +241,31 @@ export const getAllUsers = () => async (dispatch) => {
         })
     }
  };
+
+export const updateUser = (id, userData) => async (dispatch) => {
+    try {
+        dispatch({ type: UPDATE_USER_REQUEST })
+ 
+        const config = {
+            headers: {
+                "content-type" : "application/json"
+            }
+        }
+ 
+        const { data } = await axios.put(`/api/v1/admin/user/${id}`, userData, config);
+ 
+        dispatch({
+            type: UPDATE_USER_SUCCESS,
+            payload: data.success
+        })
+        
+    } catch (error) {
+        dispatch({
+            type : UPDATE_USER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+};
 
 
 export const clearErrors = () => async (dispatch) => {

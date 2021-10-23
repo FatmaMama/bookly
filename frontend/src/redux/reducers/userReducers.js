@@ -26,6 +26,10 @@ import { LOGIN_REQUEST,
     ALL_USERS_REQUEST,
     ALL_USERS_SUCCESS,
     ALL_USERS_FAIL,
+    UPDATE_USER_REQUEST,
+    UPDATE_USER_SUCCESS,
+    UPDATE_USER_RESET,
+    UPDATE_USER_FAIL,
     CLEAR_ERRORS,
 } from "../constants/userConstants";
 
@@ -92,12 +96,14 @@ export const userReducer = (state= {}, action) =>{
     switch (action.type){
         case UPDATE_PROFILE_REQUEST:
         case UPDATE_PASSWORD_REQUEST:
+        case UPDATE_USER_REQUEST:
             return {
                 ...state,
                 loading: true
             }
         case UPDATE_PROFILE_SUCCESS:
         case UPDATE_PASSWORD_SUCCESS:
+        case UPDATE_USER_SUCCESS:
             return {
                 ...state,
                 loading: false,
@@ -105,12 +111,14 @@ export const userReducer = (state= {}, action) =>{
             }
         case UPDATE_PROFILE_RESET:
         case UPDATE_PASSWORD_RESET:
+        case UPDATE_USER_RESET:
             return {
                 ...state,
                 isUpdated: false
             }
         case UPDATE_PROFILE_FAIL:
         case UPDATE_PASSWORD_FAIL:
+        case UPDATE_USER_FAIL:
             return {
                 ...state,
                 loading: false,
