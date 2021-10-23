@@ -22,7 +22,7 @@ import {
     CLEAR_ERRORS,
 } from '../constants/orderConstants';
 
-export const newOrderReducer = (state = { }, action) => {
+export const newOrderReducer = (state = {order : {} }, action) => {
     switch(action.type){
         case NEW_ORDER_REQUEST:
             return {
