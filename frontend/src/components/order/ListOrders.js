@@ -62,7 +62,7 @@ export default function ListOrders() {
                 ? <p style={{color : 'green'}}>{order.orderStatus}</p>
                 : <p style={{color : 'red'}}>{order.orderStatus}</p>,
                 actions : 
-                    <Link to={`/order/${order._id}`} id="blue" className="btn">
+                    <Link to={`/me/order/${order._id}`} id="blue" className="btn">
                         <i className="fa fa-eye"></i>
                     </Link>
             })

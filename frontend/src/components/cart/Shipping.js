@@ -89,6 +89,7 @@ export default function Shipping({history}) {
                                 className="form-control"
                                 name="country"
                                 value={country}
+                                readOnly
                                 required
                             >
                                     <option>

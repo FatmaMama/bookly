@@ -49,9 +49,9 @@ export default function Cart({history}) {
                     <div className="row d-flex justify-content-between">
                         <div className="col-12 col-lg-8">
                             {cartItems.map(item => (
-                                <Fragment>
+                                <Fragment  key={item.product}>
                                     <hr/>
-                                    <div className="cart-item" key={item.product}>
+                                    <div className="cart-item">
                                         <div className="row">
                                             <div className="col-4 col-lg-3">
                                                 <img src={item.image} alt="Laptop" height="90" width="115" />

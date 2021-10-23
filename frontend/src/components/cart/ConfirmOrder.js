@@ -59,14 +59,14 @@ export default function ConfirmOrder({ history }) {
             <div className="col-12 col-lg-8 mt-5 order-confirm">
 
                 <h4 className="mb-3">Shipping Info</h4>
-                <p><b>Name:</b>{user.name}</p>
-                <p><b>Phone:</b>{shippingInfo.phoneNo}</p>
-                <p className="mb-4"><b>Address:</b>{`${shippingInfo.address}, ${shippingInfo.city},
-                ${shippingInfo.postalCode}, ${shippingInfo.country}`}</p>
+                <p><b>Name:</b>{user && user.name}</p>
+                <p><b>Phone:</b>{shippingInfo && shippingInfo.phoneNo}</p>
+                <p className="mb-4"><b>Address:</b>{`${shippingInfo && shippingInfo.address}, ${shippingInfo && shippingInfo.city},
+                ${shippingInfo && shippingInfo.postalCode}, ${shippingInfo && shippingInfo.country}`}</p>
                 
                 <hr />
                 <h4 className="mt-4">Your Cart Items:</h4>
-                {cartItems.map(item => (
+                {cartItems && cartItems.map(item => (
                     <Fragment>
                         <hr />
                         <div className="cart-item my-1">

@@ -44,8 +44,8 @@ function App() {
 
           <Route path="/cart" component={Cart} exact/>
           <ProtectedRoute path="/shipping" component={Shipping} exact/>
-          <ProtectedRoute path="/order/confirm" component={ConfirmOrder} exact/>
-          <ProtectedRoute path="/order/new" component={ConfirmOrder} exact/>
+          <ProtectedRoute path="/order/confirm" component={ConfirmOrder} />
+          {/* <ProtectedRoute path="/order/new" component={ConfirmOrder} /> */}
           <ProtectedRoute path="/success" component={OrderSuccess} exact/>
 
           <Route path="/password/forgot" component={ForgotPassword} exact />
@@ -55,7 +55,7 @@ function App() {
           <ProtectedRoute path="/password/update" component={UpdatePassword} exact />
 
           <ProtectedRoute path="/orders/me" component={ListOrders} exact />
-          <ProtectedRoute path="/order/:id" component={OrderDetails} exact />
+          <ProtectedRoute path="/me/order/:id" component={OrderDetails} exact />
           
         </div>
           <ProtectedRoute path="/dashboard" component={Dashboard} exact />
