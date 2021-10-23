@@ -10,7 +10,7 @@ export default function OrderSuccess() {
 
     useEffect(() => {
         dispatch(resetCart())
-    }, [])
+    }, [dispatch])
 
     return (
         <div className="row justify-content-center">

@@ -102,10 +102,9 @@ exports.updateProduct = catchAsyncErrors(async (req,res, next) => {
         for(let i=0; i<product.images.length; i++){
             const result = await cloudinary.v2.uploader.destroy(product.images[i].public_id)
         }
-    }
 
-    let imagesLinks = [];
-    for(let i=0; i<images.length; i++){
+        let imagesLinks = [];
+        for(let i=0; i<images.length; i++){
         const result = await cloudinary.v2.uploader.upload(images[i], {
                     folder: 'products'
                 })
@@ -115,6 +114,9 @@ exports.updateProduct = catchAsyncErrors(async (req,res, next) => {
             url : result.secure_url
         })
     }
+    }
+
+    
 
     req.body.images = imagesLinks;
 

@@ -33,7 +33,7 @@ export default function UpdateProfile({ history }) {
             alert.error(error);
             dispatch(clearErrors())
         }
-    }, [dispatch, alert, isUpdated, error, history]);
+    }, [dispatch, alert, isUpdated, error, history, user]);
 
     const submitHandler = (e) =>{
         e.preventDefault();

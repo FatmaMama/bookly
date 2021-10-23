@@ -5,15 +5,16 @@ import { useAlert } from 'react-alert';
 import { MDBDataTable } from 'mdbreact';
 import Loader from '../layouts/Loader';
 import SideBar from './SideBar';
-import { getAllUsers, clearErrors } from '../../redux/actions/userActions';
+import { getAllUsers, clearErrors, deleteUser } from '../../redux/actions/userActions';
+import { DELETE_USER_RESET } from '../../redux/constants/userConstants';
 
-export default function UsersList() {
+export default function UsersList({history}) {
 
     const alert = useAlert();
     const dispatch = useDispatch();
 
     const {loading, error, users} = useSelector(state => state.allUsers);
-    
+    const { isDeleted } = useSelector(state => state.user)
 
     useEffect(() => {
         dispatch(getAllUsers())
@@ -23,18 +24,17 @@ export default function UsersList() {
             alert.error(error)
         }
 
-       
-        // if(isDeleted){
-        //     alert.success('Order deleted successfully');
-        //     history.push('/admin/orders')
-        //     dispatch({ type : DELETE_ORDER_RESET})
-        // }
+       if(isDeleted){
+            alert.success('User deleted successfully');
+            history.push('/admin/users')
+            dispatch({ type : DELETE_USER_RESET})
+        }
 
-    }, [dispatch, alert, error]);
+    }, [dispatch, alert, error, isDeleted, history]);
 
-    // const deleteOrderHandler = (id) => {
-    //     dispatch(deleteOrder(id))
-    // }
+    const deleteUserHandler = (id) => {
+        dispatch(deleteUser(id))
+    }
 
     const setUsers = () => {
         const data = {
@@ -78,7 +78,7 @@ export default function UsersList() {
                     <Link to={`/admin/user/${user._id}`} id="blue" className="btn">
                         <i className="fa fa-pencil"></i>
                     </Link>
-                    <button id="red" className="btn py-1 px-2 ml-2">
+                    <button id="red" className="btn py-1 px-2 ml-2" onClick={()=>{deleteUserHandler(user._id)}} >
                     <i className="fa fa-trash"></i>
                     </button>
                 </Fragment>

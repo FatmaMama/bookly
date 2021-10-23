@@ -170,7 +170,7 @@ exports.updateProfile = catchAsyncErrors( async (req, res, next) => {
         const user = await User.findById(req.user.id);
 
         const image_id = user.avatar.public_id;
-        const res = cloudinary.v2.uploader.destroy(image_id);
+        await cloudinary.v2.uploader.destroy(image_id);
 
         const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
             folder: 'avatars',
@@ -250,6 +250,8 @@ exports.deleteUser = catchAsyncErrors( async (req, res, next) => {
     };
 
     //Remove avatar from cloudinary...
+    const image_id = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(image_id);
 
     await user.remove();
 
