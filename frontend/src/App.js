@@ -25,6 +25,7 @@ import Dashboard from './components/admin/Dashboard';
 import ProductsList from './components/admin/ProductsList';
 import NewProduct from './components/admin/NewProduct';
 import UpdateProduct from './components/admin/UpdateProduct';
+import OrdersList from './components/admin/OrdersList';
 
 function App() {
 
@@ -63,6 +64,7 @@ function App() {
           <ProtectedRoute path="/admin/products" component={ProductsList} exact />
           <ProtectedRoute path="/admin/product" component={NewProduct} exact />
           <ProtectedRoute path="/admin/product/:id" component={UpdateProduct} exact />
+          <ProtectedRoute path="/admin/orders" component={OrdersList} exact />
 
         <Footer/>
       </div>

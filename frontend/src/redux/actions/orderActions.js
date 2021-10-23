@@ -78,7 +78,7 @@ export const getOrderDetails = (id) => async (dispatch) => {
     }
 };
 
-export const allOrders = () => async (dispatch) => {
+export const getAllOrders = () => async (dispatch) => {
     try {
         dispatch({ type : ALL_ORDERS_REQUEST });
 
