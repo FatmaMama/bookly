@@ -25,7 +25,7 @@ export default function Login({ history, location }) {
             alert.error(error);
             dispatch(clearErrors())
         }
-    }, [dispatch, alert, error, isAuthenticated, history]);
+    }, [dispatch, alert, error, isAuthenticated, history, redirect]);
 
     const submitHandler = (e) =>{
         e.preventDefault();

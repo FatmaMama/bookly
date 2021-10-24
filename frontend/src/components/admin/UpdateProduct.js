@@ -59,6 +59,7 @@ export default function UpdateProduct({match, history}) {
             alert.error(updateError);
             dispatch(clearErrors())
         }
+       
     }, [dispatch, alert, error, isUpdated, history, updateError, product, match.params.id]);
 
     const submitHandler = (e) =>{
@@ -74,7 +75,14 @@ export default function UpdateProduct({match, history}) {
         images.forEach(image => {
             formData.append('images', image)
         })
-        dispatch(updateProduct(product._id, formData))
+
+        if(images.length === 0){
+            alert.error('Choose Images for your product');
+            dispatch(clearErrors());
+        } else {
+            dispatch(updateProduct(product._id, formData))
+        }
+        
     };
 
     const onChange = (e) => {

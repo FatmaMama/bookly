@@ -1,9 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import { MDBDataTable } from 'mdbreact';
-import Loader from '../layouts/Loader';
 import SideBar from './SideBar';
 import { clearErrors, deleteReview, getProductReviews } from '../../redux/actions/productActions';
 import { DELETE_REVIEW_RESET } from '../../redux/constants/productConstants';
@@ -16,7 +14,7 @@ export default function ProductReviews() {
     const alert = useAlert();
     const dispatch = useDispatch();
 
-    const {loading, error, reviews} = useSelector(state => state.productReviews);
+    const { error, reviews} = useSelector(state => state.productReviews);
     const { isDeleted } = useSelector(state => state.review);
     
     useEffect(() => {
