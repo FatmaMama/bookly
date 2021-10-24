@@ -5,7 +5,7 @@ export default function Footer() {
         <Fragment>
             <footer className="py-1">
       <p className="text-center mt-1">
-        Fantasia - 2021 -  All Rights Reserved
+        Bookly - 2021 -  All Rights Reserved
       </p>
     </footer>
         </Fragment>

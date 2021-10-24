@@ -20,9 +20,8 @@ export default function NewProduct({history}) {
     const [imagesPreview, setImagesPreview] = useState([]);
 
     const categories = [
-        'Electronics','Cameras','Laptops','Accessories','Headphones','Food','Books','Clothes/Shoes',
-        'Beauty/Health','Sports','Outdoor','Home',
-    ]
+        'Dtective & Thriller','Romance','Fantasy & Science-fiction','Practical Life & Leisure','Religion',
+        'Economics & Law','Humanities & Social Sciences','Science and Technology']
 
     const alert = useAlert();
     const dispatch = useDispatch()
@@ -131,6 +130,7 @@ export default function NewProduct({history}) {
                                 name= "category"
                                 value={category}
                                 onChange={onChange}>
+                                    <option>Choose a Category</option>
                                     {categories.map(category => (
                                         <option key={category} value={category} >{category}</option>
                                     ))}

@@ -33,12 +33,12 @@ export default function Profile() {
                             <p>{String(user.createdAt).substring(0, 10)}</p>
 
                             {user.role !== "admin" && (
-                                <Link to="/orders/me" className="btn btn-danger btn-block mt-5">
+                                <Link to="/orders/me" className="btn btn-block mt-5 myOrders-btn">
                                 My Orders
                                 </Link>
                             )}
 
-                            <Link to="/password/update" className="btn btn-primary btn-block mt-3">
+                            <Link to="/password/update" className="btn btn-block mt-3 changePassword-btn">
                                 Change Password
                             </Link>
                         </div>

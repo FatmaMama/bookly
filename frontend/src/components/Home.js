@@ -1,121 +1,101 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect} from 'react';
+import { Link } from 'react-router-dom';
 import {useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../redux/actions/productActions';
+import { getAdminProducts} from '../redux/actions/productActions';
+import { useAlert } from 'react-alert';
 import Loader from './layouts/Loader';
 import Product from './Product';
-import { useAlert } from 'react-alert';
-import  Pagination  from 'react-js-pagination';
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
 
+export default function Home({match}) {
 
-const { createSliderWithTooltip } = Slider;
-const Range = createSliderWithTooltip(Slider.Range)
-
-export default function Home({ match }) {
     const alert = useAlert();
     const dispatch = useDispatch();
-    
-
-    const [ currentPage, setCurrentPage ] = useState(1);
-    const [ price, setPrice ] = useState([1, 1000]);
-    const [ category, setCategory ] = useState('')
-    const keyword = match.params.keyword;
-
-    const categories = [
-        'All','Electronics','Cameras','Laptops','Accessories','Headphones','Food','Books','Clothes/Shoes',
-        'Beauty/Health','Sports','Outdoor','Home',
-    ]
    
-    const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.products)
+    const { loading, products, error} = useSelector(state => state.products)
 
     useEffect(() => {
         if(error){
             return alert.error(error)
         };
 
-        dispatch(getProducts(keyword,currentPage, price, category));
-        console.log(category)
-    }, [dispatch, alert, error, keyword, currentPage, price, category]);
+        dispatch(getAdminProducts());
+        
+    }, [dispatch, alert, error]);
 
-    const setCurrentPageNo = (pageNumber) => {
-        setCurrentPage(pageNumber)
-    };
+    
+
 
     return (
         <Fragment>
-            { loading ? <Loader/> : (
-                <Fragment>
-                    <h1 id="products_heading">Latest Products</h1>
+            <section className="home" id="home">
+                <div className="container" >
+                    <div className="row p-5">
 
-                    <section id="products" className="container mt-5">
-                        <div className="row" >
-                            <div className="range col-lg-4 col-md-4 col-6 mt-5 mb-5">
-                                <Range className="range"
-                                    marks={{
-                                        1: '$1',
-                                        1000: '$1000'
-                                    }}
-                                    min={1}
-                                    max={1000}
-                                    defaultValue={[1,1000]}
-                                    tipFormatter={value => `$${value}`}
-                                    tipProps={{
-                                        placement: "top",
-                                        visible: true
-                                    }}
-                                    value={price}
-                                    onChange={price => setPrice(price)}
-                                    handleStyle={{
-                                        borderColor: "#fa9c23"
-                                      }}
-                                    railStyle={{ backgroundColor: '#fa9c23' }}
-                                />
+                        <div className="col-lg-6 pt-5">
+                            <h3 className="cover-title">Upto 75% Off</h3>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam deserunt nostrum accusamus. Nam alias sit necessitatibus, aliquid ex minima at!</p>
+                            <Link to="/home" className="btn shop-btn">Shop Now</Link>
+                        </div>
+
+                        <div className="col-lg-6 pt-3">
+                            <div className="images-wrapper d-flex justify-content-center">
+                                <img className="cover-img" src="images/book-1.png" alt="book" />
+                                <img className="cover-img" src="images/book-2.png" alt="book" />
+                                <img className="cover-img" src="images/book-3.png" alt="book"/>
+
+                            </div>
+                            <img src="images/stand.png" className="stand" alt=""/>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section className="icons-container">
+                <div className="container py-5">
+                    <div className="row">
+                        <div className="col-lg-4 col-md-4 col-sm-4 icons d-flex align-items-center justify-content-center">
+                            <i className="fas fa-shipping-fast fa-3x" style={{color : "#27ae60"}}></i>
+                            <div className="content ml-3">
+                                <h3 className="icons-title">Free Shipping</h3>
+                                <p>Order Over $100</p>
                             </div>
                         </div>
 
-                        <div className="row">
-                                <div className="col-lg-3">
-                                      <h4>Categories</h4>
-                                      <ul>
-                                          {categories.map(category => (
-                                              <li key={category}
-                                              style={{cursor : 'pointer'}}
-                                                onClick={()=>{
-                                                    if(category==='All'){
-                                                        setCategory('')
-                                                    } else {
-                                                        setCategory(category)
-                                                    }
-                                                 }}
-                                              >{category}</li>
-                                          ))}
-                                      </ul>
-                                </div>
-                                {products && products.map(product => (
-                                <Product key={product._id} product = {product} />
-                                ))}
+                        <div className="col-lg-4 col-md-4 col-sm-4 icons d-flex align-items-center justify-content-center">
+                            <i className="fas fa-redo-alt fa-3x" style={{color : "#27ae60"}}></i>
+                            <div className="content ml-3">
+                                <h3 className="icons-title">Easy Returns</h3>
+                                <p>10 Days Returns</p>
+                            </div>
                         </div>
-                    </section>
 
-                    {resPerPage <= productsCount && (
-                        <div className="d-flex justify-content-center mt-5">
-                        <Pagination 
-                            activePage={currentPage}
-                            itemsCountPerPage={resPerPage}
-                            totalItemsCount={productsCount}
-                            onChange={setCurrentPageNo}
-                            nextPageText={'Next'}
-                            prevPageText={'Prev'}
-                            firstPageText={'first'}
-                            lastPageText={'last'}
-                            itemClass='page-item'
-                            linkClass='page-link'
-                        />
+                        <div className="col-lg-4 col-md-4 col-sm-4 icons d-flex align-items-center justify-content-center">
+                            <i className="fas fa-headset fa-3x" style={{color : "#27ae60"}}></i>
+                            <div className="content ml-3 d-flex flex-column align-content-center align-items-center">
+                                <h3 className="icons-title">24/7 Support</h3>
+                                <p>Call Us Anytime</p>
+                            </div>
                         </div>
-                    )}
-                </Fragment>
-            )}
+                    </div>
+                </div>
+            </section>
+            <section className="mt-3">
+                <h1 className="heading"> <span>Latest Books</span> </h1>
+                <div className="container" >
+                    <div className="row" >
+                        <Fragment>
+                            {loading ? <Loader /> : (
+                                <Fragment>
+                                    {products && products.splice(products.length - 8 , products.length).map(product => (
+                                        <Product key={product._id} product = {product} />
+                                    ))}
+                                </Fragment>
+                            )}
+                        </Fragment>
+                    </div>
+                </div>
+            </section>
         </Fragment>
     )
 }

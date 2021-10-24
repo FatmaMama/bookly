@@ -21,9 +21,8 @@ export default function UpdateProduct({match, history}) {
     const [oldImages, setOldImages] = useState([]);
 
     const categories = [
-        'Electronics','Cameras','Laptops','Accessories','Headphones','Food','Books','Clothes/Shoes',
-        'Beauty/Health','Sports','Outdoor','Home',
-    ]
+        'All','Dtective & Thriller','Romance','Fantasy & Science-fiction','Practical Life & Leisure','Religion',
+        'Economics & Law','Humanities & Social Sciences','Science and Technology']
 
     const alert = useAlert();
     const dispatch = useDispatch();

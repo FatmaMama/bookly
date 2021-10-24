@@ -1,6 +1,6 @@
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Home from './components/Home';
+import AllProducts from './components/AllProducts'
 import Footer from './components/layouts/Footer';
 import Header from './components/layouts/Header';
 import ProductDetails from './components/ProductDetails';
@@ -30,6 +30,7 @@ import ProcessOrder from './components/admin/ProcessOrder';
 import UsersList from './components/admin/UsersList';
 import UpdateUser from './components/admin/UpdateUser';
 import ProductReviews from './components/admin/ProductReviews';
+import Home from './components/Home';
 
 function App() {
 
@@ -41,9 +42,12 @@ function App() {
     <Router>
       <div className="App">
         <Header/>
+        <Route path="/" exact component={Home} />
+        <Route path="/home" exact component={AllProducts} />
+        <Route path="/home/search/:keyword" component={AllProducts} />
+        
         <div className="container container-fluid">
-          <Route path="/" exact component={Home} />
-          <Route path="/search/:keyword" component={Home} />
+          
           <Route path="/product/:id" exact component={ProductDetails} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />

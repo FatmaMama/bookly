@@ -27,8 +27,9 @@ export default function Header() {
         <nav className="navbar row">
             <div className="col-12 col-md-3">
                 <div className="navbar-brand">
-                    <Link to='/'>
-                        <img className="logo" src="/images/logo.png" alt="logo"/>
+                    <Link to='/' className="bookly ml-5">
+                    <i className="fa fa-book"></i>
+                    Bookly
                     </Link>
                 </div>
             </div>
@@ -37,9 +38,12 @@ export default function Header() {
                 <Route render={({history}) => <Search history={history} />} />
             </div>
 
-            <div className="col-12 col-md-3 mt-4 mt-md-0 text-center">
-                <Link to="/cart" style={{textDecoration : "none"}}>
-                    <span id="cart" className="ml-3">Cart</span>
+            <div className="col-12 col-md-3 mt-4 mt-md-0 d-flex align-items-center justify-content-center">
+                <Link to="/home" className="mr-4 shop menu">
+                    Shop
+                </Link>
+                <Link to="/cart" style={{textDecoration : "none"}} id="cart" className="d-flex align-items-center">
+                    <i className="fa fa-shopping-cart"></i>
                     <span className="ml-1" id="cart_count">{getCartCount()}</span>
                 </Link>
 
@@ -69,7 +73,7 @@ export default function Header() {
                             </Link>
                         </div>
                     </div>
-                ) : !loading && <Link to="/login" className="btn ml-4" id="login_btn">Login</Link>}
+                ) : !loading && <Link to="/login" className="btn ml-4 menu" id="login_btn">Login</Link>}
                 
             </div>
         </nav>
