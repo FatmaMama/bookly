@@ -680,7 +680,7 @@ ul.CTAs a {
 
 /* Home */
 .home{
-  background: url(css-images/banner-bg.jpg) no-repeat;
+  background: url("./css-images/banner-bg.jpg") no-repeat;
   background-size: cover;
   background-position: center;
 }
