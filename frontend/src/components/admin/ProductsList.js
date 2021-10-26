@@ -77,7 +77,7 @@ export default function ProductsList({history}) {
                 actions : 
                 <Fragment>
                     <Link to={`/admin/product/${product._id}`} className="btn py-1 px-2" id="blue">
-                        <i className="fa fa-pencil"></i>
+                        <i className="fa fa-pencil-alt"></i>
                     </Link>
                     <button id="red" className="btn py-1 px-2 ml-2" onClick={() => deleteProductHandler(product._id)}>
                         <i className="fa fa-trash"></i>

@@ -20,8 +20,14 @@ export default function NewProduct({history}) {
     const [imagesPreview, setImagesPreview] = useState([]);
 
     const categories = [
-        'Dtective & Thriller','Romance','Fantasy & Science-fiction','Practical Life & Leisure','Religion',
-        'Economics & Law','Humanities & Social Sciences','Science and Technology']
+        'Detective / Thriller',
+        'Romance',
+        'Fantasy / Science-fiction',
+        'Practical Life / Leisure',
+        'Religion',
+        'Economics / Law',
+        'Humanities / Social Sciences',
+        'Science / Technology']
 
     const alert = useAlert();
     const dispatch = useDispatch()

@@ -44,7 +44,7 @@ function App() {
         <Header/>
         <Route path="/" exact component={Home} />
         <Route path="/home" exact component={AllProducts} />
-        <Route path="/home/search/:keyword" component={AllProducts} />
+        <Route path="/search/:keyword" component={AllProducts} />
         
         <div className="container container-fluid">
           

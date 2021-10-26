@@ -149,6 +149,10 @@ nav {
   height: 300px;
 }
 
+.card-img-top:hover {
+  transform: scale(1.05);
+}
+
 .ratings {
   font-size: 1.2rem;
   color: #27ae60;

@@ -1,12 +1,12 @@
 const express = require ('express');
 const app = express();
-const dotenv = require('dotenv');
 const ConnectDB = require('./config/database');
 const errorMiddleware = require('./middlewares/errors');
 const cookieParser = require('cookie-parser');
 const bodyparser = require('body-parser');
 const cloudinary = require('cloudinary');
-const fileUpload = require('express-fileupload')
+const fileUpload = require('express-fileupload');
+const path = require('path')
 
 app.use(express.json());
 app.use(bodyparser.urlencoded({ extended : true }))
@@ -22,7 +22,8 @@ process.on('uncaughtException', err => {
 });
 
 //setup config file
-dotenv.config({ path: 'backend/config/config.env' });
+if(process.env.NODE_ENV !== "PRODUCTION") require('dotenv').config({ path: 'backend/config/config.env' });
+
 
 //connect DB
 ConnectDB();
@@ -42,6 +43,15 @@ const order = require('./routes/orderRoutes');
 app.use('/api/v1', products);
 app.use('/api/v1', user);
 app.use('/api/v1', order);
+
+//To Deploy
+if(process.env.NODE_ENV === "PRODUCTION"){
+    app.use(express.static(path.join(__dirname, '../frontend/build')))
+
+    app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname, '../frontend/build/index.html'))
+    })
+}
 
 app.use(errorMiddleware);
 

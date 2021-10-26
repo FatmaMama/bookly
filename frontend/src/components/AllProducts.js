@@ -23,8 +23,15 @@ export default function AllProducts({ match }) {
     const keyword = match.params.keyword;
 
     const categories = [
-        'All','Dtective & Thriller','Romance','Fantasy & Science-fiction','Practical Life & Leisure','Religion',
-        'Economics & Law','Humanities & Social Sciences','Science and Technology']
+        'All',
+        'Detective / Thriller',
+        'Romance',
+        'Fantasy / Science-fiction',
+        'Practical Life / Leisure',
+        'Religion',
+        'Economics / Law',
+        'Humanities / Social Sciences',
+        'Science / Technology']
    
     const { loading, products, error, productsCount, resPerPage } = useSelector(state => state.products)
 
@@ -47,7 +54,7 @@ export default function AllProducts({ match }) {
                 <Fragment>
                     <h1 className="heading mt-5"> <span>All Books</span> </h1>
 
-                    <div className="row px-5 mt-5" >
+                    <div className="row px-5 mt-5 mb-3" >
                         <div className="range col-lg-3 col-md-3 col-6 mt-2">
                             <Range className="range"
                                     marks={{
@@ -72,7 +79,7 @@ export default function AllProducts({ match }) {
                         </div>
                     </div>
 
-                    <div className="row p-5">
+                    <div className="row p-3">
                         <div className="col-lg-3 col-md-3 col-12 categories-sideBar pt-3">
                             <h5 className="pl-2 fw-bold">Books Genre</h5>
                             <ul>

@@ -1,92 +1,167 @@
 [
     {
-        "name": "Sandisk Ultra",
-        "price": "45.89",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "name": "Apeirogon",
+        "price": "38",
+        "description": "Rami Elhanan est israélien, fils d'un rescapé de la Shoah, ancien soldat de la guerre du Kippour ; Bassam Aramin est palestinien, et n'a connu que la dépossession, la prison et les humiliations.Tous deux ont perdu une fille dans le conflit. Abir avait dix ans, Smadar, treize ans.Passés le choc, la douleur, les souvenirs, le deuil, il y a l'envie de sauver des vies.Eux qui étaient nés pour se haïr décident de raconter leur histoire et de se battre pour la paix.",
         "ratings" : 4.5,
         "images" : [{
-            "public_id": "products/tzfsnrli3szrdnb4jgge",
-            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+            "public_id": "products/qvwogrgjs80h2oavkble",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635170905/products/qvwogrgjs80h2oavkble.jpg"       
          }],
-        "category" : "Electronics",
-        "seller" : "Ebay",
+        "category" : "Detective / Thriller",
+        "seller" : "Colum Mccann",
         "stock" : 50,
-        "numOfReviews" : 32,
+        "numOfReviews" : 5,
         "reviews" : []
     },
     {
-        "name": "Can USB",
+        "name": "La proie",
         "price": "164.00",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "description": "Au Cap, les inspecteurs Benny Griessel et Vaughn Cupido sont confrontés à un crime déconcertant : le corps d'un ex-flic a été balancé par une fenêtre du Rovos, le train le plus luxueux du monde. Le dossier est pourri, rien ne colle et pourtant, en haut lieu, on fait pression sur eux pour qu'ils lâchent l'enquête...À Bordeaux, Daniel Darret, ancien combattant de l'ANC, mène une vie clandestine.",
         "ratings" : 4.5,
         "images" : [{
-            "public_id": "products/l2bd3hhy8dds1cxstuuz",
-            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/l2bd3hhy8dds1cxstuuz.jpg"       
+            "public_id": "products/thriller3_pw8ehl",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635201239/products/thriller3_pw8ehl.jpg"       
          }],
-        "category" : "Electronics",
-        "seller" : "Ebay",
-        "stock" : 50,
-        "numOfReviews" : 32,
+        "category" : "Detective / Thriller",
+        "seller" : "Deon Meyer",
+        "stock" :10,
+        "numOfReviews" : 2,
         "reviews" : []
     },
     {
-        "name": "MacBook apple",
-        "price": "996.89",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
-        "ratings" : 4.5,
+        "name": "La femme au manteau bleu",
+        "price": "56",
+        "description": "Le corps, soigneusement lavé à l'eau de Javel, d'une Américaine experte en peinture de l'âge d'or hollandais a été abandonné sur un muret au panorama du col de Sir Lowry, à soixante kilomètres du Cap.Benny Griessel et Vaughn Cupido, tandem choc de la brigade criminelle des Hawks, se demandent ce qu'elle était venue faire en Afrique du Sud. Personne, dans son entourage, ne semble au courant. Mais lorsqu'ils découvrent que son travail consistait à localiser des tableaux disparus, et qu'elle avait contacté un professeur d'histoire retraité ainsi qu'un détective privé, des pistes inattendues s'ouvrent à eux...",
+        "ratings" : 4,
         "images" : [{
-            "public_id": "products/chairmount_nuubea",
-            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/chairmount_nuubea.jpg"       
+            "public_id": "products/pdgqgxzdlc2pgg8ecddf",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635171023/products/pdgqgxzdlc2pgg8ecddf.jpg"       
          }],
-        "category" : "Laptops",
-        "seller" : "Ebay",
-        "stock" : 50,
-        "numOfReviews" : 32,
+        "category" : "Detective / Thriller",
+        "seller" : "Deon Meyer",
+        "stock" : 3,
+        "numOfReviews" : 5,
         "reviews" : []
     },
     {
-        "name": "Sandisk Apple",
-        "price": "236.99",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
-        "ratings" : 4.5,
+        "name": "Conte de fées",
+        "price": "80",
+        "description": "Il était une fois dans la vallée de Napa...Camille Lammenais a grandi en toute quiétude en Californie, au coeur du domaine viticole familial. Ses parents, Joy et Christophe, y ont bâti un château dont les vins n'ont rien à envier au Bordelais natal de ce dernier. Après de brillantes études à Stanford, la jeune fille revient au bercail pour aider les siens, son rêve de toujours. Mais lorsque sa mère, gravement malade, décède, le conte de fées prend fin.",
+        "ratings" : 5,
         "images" : [{
-            "public_id": "products/tzfsnrli3szrdnb4jgge",
-            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+            "public_id": "products/hunwmw0tydzgaxsdv4cd",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635106911/products/hunwmw0tydzgaxsdv4cd.jpg"       
          }],
-        "category" : "Headphones",
-        "seller" : "Ebay",
-        "stock" : 50,
-        "numOfReviews" : 32,
+        "category" : "Romance",
+        "seller" : "Danielle Steel",
+        "stock" : 10,
+        "numOfReviews" : 1,
         "reviews" : []
     },
     {
-        "name": "Sandisk Ultra",
-        "price": "45.89",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
-        "ratings" : 4.5,
+        "name": "Pars avec lui",
+        "price": "28",
+        "description": "Ils s'appellent Roméo et Juliette. Comme s'ils étaient prédestinés. Mais c'est à eux d'écrire leur histoire, en dépit des accrocs, des cahots et des heurts.Lui est pompier, un héros du quotidien, solide comme un roc. Mais pas assez pour résister à une chute de huit étages, heureusement amortie par des arbres.Elle est infirmière. De celles pour qui leur travail va bien plus loin que soigner les corps. Attentive, attentionnée, elle donne aux autres sans compter ce que son propre compagnon, Laurent, lui refuse.",
+        "ratings" : 3,
         "images" : [{
-            "public_id": "products/tzfsnrli3szrdnb4jgge",
-            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+            "public_id": "products/k1fddvsai7kuvns5dzcw",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635107793/products/k1fddvsai7kuvns5dzcw.jpg"       
          }],
-        "category" : "Accessories",
-        "seller" : "Ebay",
-        "stock" : 50,
-        "numOfReviews" : 32,
+        "category" : "Romance",
+        "seller" : "Agnès Ledig",
+        "stock" : 0,
+        "numOfReviews" : 10,
         "reviews" : []
     },
     {
-        "name": "Sandisk Ultra",
-        "price": "45.89",
-        "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quas tempora, asperiores quod ex repudiandae labore reiciendis nisi dolorum totam, blanditiis velit veritatis! Ullam labore enim vel. Commodi, cupiditate esse.",
+        "name": "La petite boulangerie du bout du monde",
+        "price": "33.90",
+        "description": "Quand son mariage et sa petite entreprise font naufrage, Polly quitte Plymouth et trouve refuge dans un petit port tranquille d'une île des Cornouailles. Quoi de mieux qu'un village de quelques âmes battu par les vents pour réfléchir et repartir à zéro ? Seule dans une boutique laissée à l'abandon, Polly se consacre à son plaisir favori : préparer du pain. Petit à petit, de rencontres farfelues - avec un bébé macareux blessé, un apiculteur dilettante, des marins gourmands - en petits bonheurs partagés, ce qui n'était qu'un break semble annoncer le début d'une nouvelle vie.",
+        "ratings" : 0,
+        "images" : [{
+            "public_id": "products/qq1bxqqv6kexpo1nlvbo",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635107128/products/qq1bxqqv6kexpo1nlvbo.jpg"       
+         }],
+        "category" : "Romance",
+        "seller" : "Jenny Colgan",
+        "stock" : 4,
+        "numOfReviews" : 0,
+        "reviews" : []
+    },
+    {
+        "name": "Le pouvoir du moment present ; guide d'eveil spirituel",
+        "price": "39",
+        "description": "Le pouvoir du moment présent est probablement l'un des livres les plus importants de notre époque.Son enseignement simple et néanmoins profond a aidé des millions de gens à travers le monde à trouver la paix intérieure et à se sentir plus épanouis dans leur vie. Au coeur de cet enseignement se trouve la transformation de la conscience : en vivant dans l'instant présent, nous transcendons notre ego et accédons à un état de grâce, de légèreté et de bien-être. Ce livre a le pouvoir de métamorphoser votre vie par une expérience unique.",
+        "ratings" : 0,
+        "images" : [{
+            "public_id": "products/bgn6gtiufbxtfwclbkoe",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635107296/products/bgn6gtiufbxtfwclbkoe.jpg"       
+         }],
+        "category" : "Practical Life / Leisure",
+        "seller" : "Eckhart Tolle",
+        "stock" : 4,
+        "numOfReviews" : 0,
+        "reviews" : []
+    },
+    {
+        "name": "L'âme du monde",
+        "price": "27",
+        "description": "Pressentant l'imminence d'un cataclysme planétaire, sept sages venus des quatre coins du monde se réunissent pour transmettre à deux jeunes adolescents les clés de la sagesse universelle. Au-delà des divergences culturelles et historiques de leurs traditions respectives, ils s'appuient sur leur expérience personnelle, inspirés par ce que les philosophes de l'Antiquité appellent « l'âme du monde » ... la force bienveillante qui maintient l'harmonie de l'univers.",
         "ratings" : 4.5,
         "images" : [{
-            "public_id": "products/tzfsnrli3szrdnb4jgge",
-            "url" : "https://res.cloudinary.com/shopit/image/upload/v1606231282/products/tzfsnrli3szrdnb4jgge.jpg"       
+            "public_id": "products/irxpand3y4bwmzhowy3o",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635107386/products/irxpand3y4bwmzhowy3o.jpg"       
          }],
-        "category" : "Electronics",
-        "seller" : "Ebay",
-        "stock" : 50,
-        "numOfReviews" : 32,
+        "category" : "Religion",
+        "seller" : "Frédéric Lenoir",
+        "stock" : 4,
+        "numOfReviews" : 3,
+        "reviews" : []
+    },
+    {
+        "name": "Sorcières ; la puissance invaincue des femmes",
+        "price": "72",
+        "description": "Qu'elles vendent des grimoires sur Etsy, postent des photos de leur autel orné de cristaux sur Instagram ou se rassemblent pour jeter des sorts à Donald Trump, les sorcières sont partout. Davantage encore que leurs aînées des années 1970, les féministes actuelles semblent hantées par cette figure. La sorcière est à la fois la victime absolue, celle pour qui on réclame justice, et la rebelle obstinée, insaisissable. Mais qui étaient au juste celles qui, dans l'Europe de la Renaissance, ont été accusées de sorcellerie ? Quels types de femme ces siècles de terreur ont-ils censurés, éliminés, réprimés ?",
+        "ratings" : 4.5,
+        "images" : [{
+            "public_id": "products/r1unrj9i1pyigde1zm4x",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635171069/products/r1unrj9i1pyigde1zm4x.jpg"       
+         }],
+        "category" : "Humanities / Social Sciences",
+        "seller" : "Mona Chollet",
+        "stock" : 4,
+        "numOfReviews" : 3,
+        "reviews" : []
+    },
+    {
+        "name": "Le charme discret de l'intestin : tout sur un organe mal aimé...",
+        "price": "52",
+        "description": "Surpoids, dépression, diabète, maladies de peau... Et si tout se jouait dans l'intestin ? Au fil des pages de son brillant ouvrage, Giulia Enders, jeune médecin allemande, plaide avec humour pour cet organe qu'on a tendance à négliger, voire à maltraiter. Après une visite guidée de notre système digestif, elle présente, toujours de façon claire et captivante, les résultats des toutes dernières recherches sur le rôle du deuxième cerveau pour notre bien-être. C'est avec des arguments scientifiques qu'elle nous invite à changer de comportement alimentaire, à éviter certains médicaments, et appliquer quelques règles très concrètes en faveur d'une digestion réussie.",
+        "ratings" : 5,
+        "images" : [{
+            "public_id": "products/ws6ckkydadwpmepmsp9o",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635171145/products/ws6ckkydadwpmepmsp9o.jpg"       
+         }],
+        "category" : "Science / Technology",
+        "seller" : "Giulia Enders",
+        "stock" : 4,
+        "numOfReviews" : 1,
+        "reviews" : []
+    },
+    {
+        "name": "CHARLIE HEBDO ; janvier 2015 ; le procès",
+        "price": "88",
+        "description": "Le procès des attentats de janvier 2015 contre Charlie Hebdo, une policière à Montrouge et l'Hyper Cacher s'étend du 2 septembre au 10 novembre pour juger quatorze accusés.",
+        "ratings" : 5,
+        "images" : [{
+            "public_id": "products/economie2_gl14zi",
+            "url" : "https://res.cloudinary.com/fantasy2021/image/upload/v1635202668/products/economie2_gl14zi.jpg"       
+         }],
+        "category" : "Science / Technology",
+        "seller" : "Yannick Haenel, François Boucq",
+        "stock" : 4,
+        "numOfReviews" : 1,
         "reviews" : []
     }
 ]
