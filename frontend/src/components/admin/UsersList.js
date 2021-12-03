@@ -76,7 +76,7 @@ export default function UsersList({history}) {
                 actions : 
                 <Fragment>
                     <Link to={`/admin/user/${user._id}`} id="blue" className="btn">
-                        <i className="fa fa-pencil"></i>
+                        <i className="fa fa-pencil-alt"></i>
                     </Link>
                     <button id="red" className="btn py-1 px-2 ml-2" onClick={()=>{deleteUserHandler(user._id)}} >
                     <i className="fa fa-trash"></i>

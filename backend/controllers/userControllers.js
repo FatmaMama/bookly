@@ -9,13 +9,30 @@ const cloudinary = require('cloudinary')
 //Regiter user   api/v1/register
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
 
-    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: 'avatars',
-        width: 150,
-        crop: 'scale'
-    });
+    const {name, email, password, avatar } = req.body;
 
-    const {name, email, password } = req.body;
+        if(!name || !email || !password){
+            return next(new ErrorHandler("Not all fields have been entered.", 401))
+        }
+
+        let result;
+       if(avatar){
+            result = await cloudinary.v2.uploader.upload(avatar, {
+                folder: 'avatars',
+                width: 150,
+                crop: 'scale'
+            });
+       } else {
+           result = {
+               public_id: "avatars/default-avatar_ww3gwa.png",
+               secure_url: "https://res.cloudinary.com/fantasy2021/image/upload/v1636497886/avatars/default-avatar_ww3gwa.png"
+           }
+       }
+
+       const isEmailExist = await User.findOne({ email : email }).select('+password');
+        if (isEmailExist){
+            return next(new ErrorHandler("An account with this email already exist.", 401))
+        }
 
     const user = await User.create({
         name,
